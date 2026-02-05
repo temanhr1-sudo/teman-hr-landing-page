@@ -3,134 +3,199 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin V2 - Teman HR</title>
+    <title>Admin V5.1 - Fixed</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .code-block { background: #1e293b; color: #4ade80; font-family: monospace; padding: 1rem; border-radius: 0.5rem; width: 100%; height: 200px; font-size: 0.85rem; }
+    </style>
 </head>
 <body class="bg-slate-100 p-8 font-sans">
 
-    <div class="max-w-5xl mx-auto bg-white p-8 rounded-xl shadow-xl border border-slate-200">
-        <div class="flex justify-between items-center mb-8">
-            <h1 class="text-3xl font-bold text-blue-800">📝 Penulis Artikel V2</h1>
-            <span class="bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full">Support Media</span>
-        </div>
+    <div class="max-w-6xl mx-auto bg-white p-8 rounded-xl shadow-xl border border-slate-200">
+        <h1 class="text-3xl font-bold text-blue-800 mb-2">📂 Admin V5.1 (Multi-Folder Fixed)</h1>
+        <p class="text-slate-500 mb-8">Otomatis mengatur path untuk struktur: <code>root</code>, folder <code>artikel/</code>, dan folder <code>gambar/</code>.</p>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
             
-            <div class="space-y-6">
-                <div>
-                    <label class="block text-sm font-bold mb-2 text-slate-700">Judul Artikel</label>
-                    <input type="text" id="judul" class="w-full border border-slate-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none" placeholder="Contoh: Tutorial HRIS">
+            <div class="space-y-5">
+                <div class="bg-blue-50 p-4 rounded-lg border border-blue-100">
+                    <label class="block text-sm font-bold mb-1 text-blue-800">1. Nama File Artikel</label>
+                    <div class="flex items-center">
+                        <input type="text" id="filename" class="w-full border p-2 rounded-l text-sm" placeholder="cara-hitung-kpi">
+                        <span class="bg-blue-200 text-blue-800 px-3 py-2 rounded-r text-sm font-bold">.html</span>
+                    </div>
+                    <p class="text-[10px] text-blue-600 mt-1">*Nanti simpan di folder <b>/artikel</b>.</p>
+                </div>
+
+                <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-100">
+                    <label class="block text-sm font-bold mb-1 text-yellow-800">2. Nama File Gambar</label>
+                    <input type="text" id="gambar" class="w-full border p-2 rounded text-sm" placeholder="foto-rapat.jpg">
+                    <p class="text-[10px] text-yellow-700 mt-1">*Pastikan file sudah ada di folder <b>/gambar</b>.</p>
                 </div>
 
                 <div>
-                    <label class="block text-sm font-bold mb-2 text-slate-700">Kategori</label>
-                    <select id="kategori" class="w-full border border-slate-300 p-3 rounded-lg bg-white">
-                        <option value="STRATEGI">STRATEGI (Biru)</option>
-                        <option value="TUTORIAL">TUTORIAL (Hijau)</option>
-                        <option value="KARIR">KARIR (Ungu)</option>
-                        <option value="REGULASI">REGULASI (Merah)</option>
+                    <label class="block text-sm font-bold mb-1">Judul Artikel</label>
+                    <input type="text" id="judul" class="w-full border p-2 rounded" placeholder="Judul...">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold mb-1">Kategori</label>
+                    <select id="kategori" class="w-full border p-2 rounded">
+                        <option value="STRATEGI">STRATEGI</option>
+                        <option value="TUTORIAL">TUTORIAL</option>
+                        <option value="KARIR">KARIR</option>
+                        <option value="REGULASI">REGULASI</option>
                     </select>
                 </div>
 
-                <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
-                    <label class="block text-sm font-bold mb-2 text-yellow-800">📸 Nama File Gambar (Opsional)</label>
-                    <input type="text" id="gambar" class="w-full border border-yellow-300 p-2 rounded bg-white text-sm" placeholder="foto-rapat.jpg">
-                    <p class="text-xs text-yellow-700 mt-1">*Pastikan file gambar sudah dicopy ke folder project.</p>
+                <div>
+                    <label class="block text-sm font-bold mb-1">Ringkasan (Intro)</label>
+                    <textarea id="ringkasan" rows="2" class="w-full border p-2 rounded text-sm"></textarea>
                 </div>
 
-                <div class="bg-red-50 p-4 rounded-lg border border-red-200">
-                    <label class="block text-sm font-bold mb-2 text-red-800">▶️ Link YouTube (Opsional)</label>
-                    <input type="text" id="youtube" class="w-full border border-red-300 p-2 rounded bg-white text-sm" placeholder="https://www.youtube.com/watch?v=...">
-                    <p class="text-xs text-red-700 mt-1">*Copy link lengkap dari browser.</p>
+                 <div>
+                    <label class="block text-sm font-bold mb-1">Isi Lengkap (HTML)</label>
+                    <textarea id="konten" rows="8" class="w-full border p-2 rounded font-mono text-sm" placeholder="<p>Paragraf 1...</p>"></textarea>
                 </div>
             </div>
 
-            <div class="space-y-4">
-                <label class="block text-sm font-bold text-slate-700">Isi Artikel (HTML)</label>
-                <p class="text-xs text-slate-500 mb-2">Gunakan &lt;p&gt;paragraf&lt;/p&gt; untuk memisah baris.</p>
-                <textarea id="konten" rows="12" class="w-full border border-slate-300 p-4 rounded-lg font-mono text-sm focus:ring-2 focus:ring-blue-500 outline-none" placeholder="<p>Tulis paragraf pertama disini...</p>
-
-<p>Tulis paragraf kedua disini...</p>"></textarea>
-            </div>
-        </div>
-
-        <button onclick="generateCode()" class="w-full mt-8 bg-blue-700 text-white font-bold py-4 px-6 rounded-lg hover:bg-blue-800 transition shadow-lg text-lg">
-            🚀 GENERATE CODE
-        </button>
-
-        <div id="outputSection" class="hidden mt-8 pt-8 border-t-2 border-dashed border-slate-300">
-            <h3 class="text-lg font-bold mb-2 text-slate-700">Hasil Kode (Copy & Paste ke blog.html):</h3>
-            <div class="relative">
-                <textarea id="resultCode" rows="10" class="w-full bg-slate-800 text-green-400 font-mono p-4 rounded-lg text-sm" readonly></textarea>
-                <button onclick="copyToClipboard()" class="absolute top-2 right-2 bg-white text-slate-800 text-xs font-bold py-1 px-3 rounded hover:bg-slate-200">
-                    COPY
+            <div class="space-y-6">
+                <button onclick="generateCode()" class="w-full bg-blue-700 text-white font-bold py-4 rounded-lg hover:bg-blue-800 transition shadow-lg">
+                    🚀 GENERATE KODE V5
                 </button>
+
+                <div>
+                    <div class="flex justify-between items-center mb-1">
+                        <label class="font-bold text-sm text-slate-700">A. Paste ke `blog.html` (Preview)</label>
+                        <button onclick="copyToClipboard('resultPreview')" class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded hover:bg-blue-200 font-bold">Copy A</button>
+                    </div>
+                    <textarea id="resultPreview" class="code-block" readonly></textarea>
+                </div>
+
+                <div>
+                    <div class="flex justify-between items-center mb-1">
+                        <label class="font-bold text-sm text-slate-700">B. Paste ke File Baru (Dalam Folder Artikel)</label>
+                        <button onclick="copyToClipboard('resultFull')" class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded hover:bg-green-200 font-bold">Copy B</button>
+                    </div>
+                    <textarea id="resultFull" class="code-block" readonly></textarea>
+                </div>
             </div>
         </div>
-
     </div>
 
     <script>
         function generateCode() {
+            const filename = document.getElementById('filename').value.replace(/\s+/g, '-').toLowerCase();
             const judul = document.getElementById('judul').value;
             const kategori = document.getElementById('kategori').value;
             const gambar = document.getElementById('gambar').value;
-            const youtube = document.getElementById('youtube').value;
+            const ringkasan = document.getElementById('ringkasan').value;
             const konten = document.getElementById('konten').value;
 
-            // Warna Kategori
-            let colorClass = "text-blue-600 border-blue-600";
-            if(kategori === 'TUTORIAL') colorClass = "text-green-600 border-green-600";
-            if(kategori === 'REGULASI') colorClass = "text-red-600 border-red-600";
-            if(kategori === 'KARIR') colorClass = "text-purple-600 border-purple-600";
+            // WARNA KATEGORI
+            let colorClass = "text-blue-600 bg-blue-50";
+            if(kategori === 'TUTORIAL') colorClass = "text-green-600 bg-green-50";
+            if(kategori === 'REGULASI') colorClass = "text-red-600 bg-red-50";
+            if(kategori === 'KARIR') colorClass = "text-purple-600 bg-purple-50";
 
-            // Logic Gambar
-            let htmlGambar = '';
-            if(gambar) {
-                htmlGambar = `
-            <div class="mb-6 rounded-lg overflow-hidden shadow-md">
-                <img src="./${gambar}" alt="${judul}" class="w-full h-64 object-cover">
-            </div>`;
-            }
-
-            // Logic YouTube
-            let htmlYoutube = '';
-            if(youtube) {
-                // Ambil ID Video dari Link
-                const videoId = youtube.split('v=')[1]?.split('&')[0];
-                if(videoId) {
-                    htmlYoutube = `
-            <div class="mb-6 aspect-w-16 aspect-h-9 rounded-lg overflow-hidden shadow-md">
-                <iframe class="w-full h-64 md:h-96" src="https://www.youtube.com/embed/${videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>`;
-                }
-            }
-
-            // Template Akhir
-            const template = `
-        <article class="bg-white p-8 rounded-xl shadow-sm mb-12 border border-gray-100 hover:border-blue-300 transition">
-            <span class="${colorClass} border-b-2 pb-1 text-sm font-bold tracking-wider">${kategori}</span>
-            <h2 class="text-3xl font-bold mt-4 mb-6 text-gray-900 leading-tight">${judul}</h2>
+            // LOGIC PATH GAMBAR
+            let imgTagCard = '';
+            let imgTagFull = '';
             
-            ${htmlGambar}
-            ${htmlYoutube}
+            if(gambar) {
+                // Di blog.html (Root) -> Masuk ke folder gambar -> "gambar/foto.jpg"
+                imgTagCard = `<img src="gambar/${gambar}" alt="${judul}" class="w-full h-48 object-cover">`;
+                
+                // Di artikel/file.html (Dalam Folder) -> Keluar dulu (..) -> Masuk gambar -> "../gambar/foto.jpg"
+                imgTagFull = `<div class="mb-8 rounded-xl overflow-hidden shadow-lg"><img src="../gambar/${gambar}" alt="${judul}" class="w-full object-cover max-h-[500px]"></div>`;
+            } else {
+                imgTagCard = `<div class="w-full h-48 bg-gray-200 flex items-center justify-center text-gray-400">No Image</div>`;
+            }
 
-            <div class="prose max-w-none text-gray-600 leading-relaxed space-y-4">
-                ${konten}
+            // 1. KODE PREVIEW
+            const codePreview = `
+        <article class="bg-white rounded-xl shadow-sm border hover:shadow-md transition overflow-hidden mb-8 flex flex-col md:flex-row">
+            <div class="md:w-1/3">
+                ${imgTagCard}
             </div>
-
-            <div class="mt-8 pt-6 border-t border-gray-100 flex justify-between items-center">
-                <span class="text-sm text-gray-400">Ditulis oleh: Ari Ramadhan</span>
-                <button class="text-blue-600 font-semibold hover:underline">Share Artikel ↗</button>
+            <div class="p-6 md:w-2/3 flex flex-col justify-between">
+                <div>
+                    <span class="${colorClass} px-2 py-1 rounded text-xs font-bold tracking-wider mb-2 inline-block">${kategori}</span>
+                    <h2 class="text-xl font-bold mb-3 text-gray-900 leading-tight">
+                        <a href="artikel/${filename}.html" class="hover:text-blue-600 transition">${judul}</a>
+                    </h2>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                        ${ringkasan}
+                    </p>
+                </div>
+                <a href="artikel/${filename}.html" class="text-blue-600 font-bold text-sm hover:underline flex items-center gap-1">
+                    Baca Selengkapnya →
+                </a>
             </div>
         </article>`;
 
-            document.getElementById('resultCode').value = template;
-            document.getElementById('outputSection').classList.remove('hidden');
+            // 2. KODE FULL PAGE (Perhatikan tanda backslash \ sebelum script untuk mencegah error)
+            const codeFull = `<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${judul} - Teman HR</title>
+    <script src="https://cdn.tailwindcss.com"><\/script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9004113328614297" crossorigin="anonymous"><\/script>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+    <nav class="bg-white border-b border-gray-100 fixed w-full z-50 top-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="../index.html" class="text-2xl font-bold text-blue-600">Teman<span class="text-gray-900">HR</span></a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="../index.html" class="text-sm font-medium text-gray-700 hover:text-blue-600 px-3 py-2">Beranda</a>
+                    <a href="../toko.html" class="text-sm font-medium text-gray-700 hover:text-blue-600 px-3 py-2">Toko & Tools</a>
+                    <a href="../blog.html" class="text-sm font-medium text-blue-600 px-3 py-2">Artikel</a>
+                </div>
+                <div class="flex items-center">
+                    <a href="https://app.temanhr.my.id" class="px-6 py-2.5 text-sm font-bold rounded-full text-white bg-blue-600 hover:bg-blue-700 transition">Masuk Aplikasi</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <article class="pt-32 pb-16 px-4">
+        <div class="max-w-3xl mx-auto bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-gray-100">
+            <a href="../blog.html" class="text-gray-400 text-sm hover:text-blue-600 mb-6 inline-block">← Kembali ke Artikel</a>
+            
+            <span class="${colorClass} px-3 py-1 rounded-full text-xs font-bold tracking-wider mb-4 inline-block">${kategori}</span>
+            <h1 class="text-3xl md:text-4xl font-extrabold mb-6 text-gray-900 leading-tight">${judul}</h1>
+            
+            ${imgTagFull}
+
+            <div class="prose prose-lg max-w-none text-gray-600 leading-relaxed space-y-6">
+                ${konten}
+            </div>
+
+            <div class="mt-12 pt-8 border-t border-gray-100">
+                <p class="text-sm text-gray-400">Ditulis oleh: Ari Ramadhan</p>
+            </div>
+        </div>
+    </article>
+
+    <footer class="bg-gray-900 text-white py-8 text-center mt-10">
+        <p>&copy; 2026 Teman HR. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>`;
+
+            document.getElementById('resultPreview').value = codePreview;
+            document.getElementById('resultFull').value = codeFull;
         }
 
-        function copyToClipboard() {
-            const copyText = document.getElementById("resultCode");
+        function copyToClipboard(elementId) {
+            const copyText = document.getElementById(elementId);
             copyText.select();
             document.execCommand("copy");
             alert("Kode berhasil dicopy!");
