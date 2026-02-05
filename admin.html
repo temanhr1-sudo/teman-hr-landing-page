@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Post Generator - Teman HR</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8 font-sans">
+
+    <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg">
+        <h1 class="text-2xl font-bold mb-6 text-blue-600">📝 Generator Artikel Baru</h1>
+        
+        <div class="grid grid-cols-1 gap-6">
+            <div>
+                <label class="block text-sm font-bold mb-2">Judul Artikel</label>
+                <input type="text" id="judul" class="w-full border p-3 rounded-lg" placeholder="Contoh: Cara Menghitung PPh 21 Terbaru">
+            </div>
+
+            <div>
+                <label class="block text-sm font-bold mb-2">Kategori (Huruf Kapital)</label>
+                <select id="kategori" class="w-full border p-3 rounded-lg">
+                    <option value="STRATEGI">STRATEGI</option>
+                    <option value="TUTORIAL">TUTORIAL</option>
+                    <option value="KARIR">KARIR</option>
+                    <option value="REGULASI">REGULASI</option>
+                </select>
+                </div>
+
+            <div>
+                <label class="block text-sm font-bold mb-2">Ringkasan (Intro)</label>
+                <textarea id="ringkasan" rows="3" class="w-full border p-3 rounded-lg" placeholder="Paragraf pembuka yang menarik..."></textarea>
+            </div>
+
+            <button onclick="generateCode()" class="bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition">
+                🚀 Buat Kode Artikel
+            </button>
+        </div>
+
+        <hr class="my-8">
+
+        <div id="outputSection" class="hidden">
+            <h3 class="text-lg font-bold mb-2">Hasil Kode (Copy Ini):</h3>
+            <textarea id="resultCode" rows="10" class="w-full bg-gray-900 text-green-400 font-mono p-4 rounded-lg text-sm" readonly></textarea>
+            
+            <button onclick="copyToClipboard()" class="mt-4 bg-gray-200 text-gray-800 font-bold py-2 px-4 rounded hover:bg-gray-300">
+                📋 Copy Kode
+            </button>
+            <p class="text-sm text-gray-500 mt-2">Setelah dicopy, paste kode di atas ke file <b>blog.html</b> di bagian bawah artikel terakhir.</p>
+        </div>
+
+    </div>
+
+    <script>
+        function generateCode() {
+            const judul = document.getElementById('judul').value;
+            const kategori = document.getElementById('kategori').value;
+            const ringkasan = document.getElementById('ringkasan').value;
+
+            // Tentukan warna kategori
+            let colorClass = "text-blue-600";
+            if(kategori === 'TUTORIAL') colorClass = "text-green-600";
+            if(kategori === 'REGULASI') colorClass = "text-red-600";
+            if(kategori === 'KARIR') colorClass = "text-purple-600";
+
+            // Template HTML Artikel
+            const template = `
+        <article class="bg-white p-8 rounded-xl shadow-sm mb-8 border hover:border-blue-300 transition">
+            <span class="${colorClass} text-sm font-bold">${kategori}</span>
+            <h2 class="text-2xl font-bold mt-2 mb-3">${judul}</h2>
+            <p class="text-gray-600 leading-relaxed mb-4">
+                ${ringkasan}
+            </p>
+            <a href="#" class="text-blue-600 font-semibold hover:underline">Baca Selengkapnya →</a>
+        </article>`;
+
+            document.getElementById('resultCode').value = template;
+            document.getElementById('outputSection').classList.remove('hidden');
+        }
+
+        function copyToClipboard() {
+            const copyText = document.getElementById("resultCode");
+            copyText.select();
+            document.execCommand("copy");
+            alert("Kode berhasil dicopy! Sekarang paste ke blog.html");
+        }
+    </script>
+</body>
+</html>
