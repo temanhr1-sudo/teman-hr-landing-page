@@ -3,50 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Post Generator - Teman HR</title>
+    <title>Admin V2 - Teman HR</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 p-8 font-sans">
+<body class="bg-slate-100 p-8 font-sans">
 
-    <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg">
-        <h1 class="text-2xl font-bold mb-6 text-blue-600">📝 Generator Artikel Baru</h1>
+    <div class="max-w-5xl mx-auto bg-white p-8 rounded-xl shadow-xl border border-slate-200">
+        <div class="flex justify-between items-center mb-8">
+            <h1 class="text-3xl font-bold text-blue-800">📝 Penulis Artikel V2</h1>
+            <span class="bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full">Support Media</span>
+        </div>
         
-        <div class="grid grid-cols-1 gap-6">
-            <div>
-                <label class="block text-sm font-bold mb-2">Judul Artikel</label>
-                <input type="text" id="judul" class="w-full border p-3 rounded-lg" placeholder="Contoh: Cara Menghitung PPh 21 Terbaru">
-            </div>
-
-            <div>
-                <label class="block text-sm font-bold mb-2">Kategori (Huruf Kapital)</label>
-                <select id="kategori" class="w-full border p-3 rounded-lg">
-                    <option value="STRATEGI">STRATEGI</option>
-                    <option value="TUTORIAL">TUTORIAL</option>
-                    <option value="KARIR">KARIR</option>
-                    <option value="REGULASI">REGULASI</option>
-                </select>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <div class="space-y-6">
+                <div>
+                    <label class="block text-sm font-bold mb-2 text-slate-700">Judul Artikel</label>
+                    <input type="text" id="judul" class="w-full border border-slate-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none" placeholder="Contoh: Tutorial HRIS">
                 </div>
 
-            <div>
-                <label class="block text-sm font-bold mb-2">Ringkasan (Intro)</label>
-                <textarea id="ringkasan" rows="3" class="w-full border p-3 rounded-lg" placeholder="Paragraf pembuka yang menarik..."></textarea>
+                <div>
+                    <label class="block text-sm font-bold mb-2 text-slate-700">Kategori</label>
+                    <select id="kategori" class="w-full border border-slate-300 p-3 rounded-lg bg-white">
+                        <option value="STRATEGI">STRATEGI (Biru)</option>
+                        <option value="TUTORIAL">TUTORIAL (Hijau)</option>
+                        <option value="KARIR">KARIR (Ungu)</option>
+                        <option value="REGULASI">REGULASI (Merah)</option>
+                    </select>
+                </div>
+
+                <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
+                    <label class="block text-sm font-bold mb-2 text-yellow-800">📸 Nama File Gambar (Opsional)</label>
+                    <input type="text" id="gambar" class="w-full border border-yellow-300 p-2 rounded bg-white text-sm" placeholder="foto-rapat.jpg">
+                    <p class="text-xs text-yellow-700 mt-1">*Pastikan file gambar sudah dicopy ke folder project.</p>
+                </div>
+
+                <div class="bg-red-50 p-4 rounded-lg border border-red-200">
+                    <label class="block text-sm font-bold mb-2 text-red-800">▶️ Link YouTube (Opsional)</label>
+                    <input type="text" id="youtube" class="w-full border border-red-300 p-2 rounded bg-white text-sm" placeholder="https://www.youtube.com/watch?v=...">
+                    <p class="text-xs text-red-700 mt-1">*Copy link lengkap dari browser.</p>
+                </div>
             </div>
 
-            <button onclick="generateCode()" class="bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition">
-                🚀 Buat Kode Artikel
-            </button>
+            <div class="space-y-4">
+                <label class="block text-sm font-bold text-slate-700">Isi Artikel (HTML)</label>
+                <p class="text-xs text-slate-500 mb-2">Gunakan &lt;p&gt;paragraf&lt;/p&gt; untuk memisah baris.</p>
+                <textarea id="konten" rows="12" class="w-full border border-slate-300 p-4 rounded-lg font-mono text-sm focus:ring-2 focus:ring-blue-500 outline-none" placeholder="<p>Tulis paragraf pertama disini...</p>
+
+<p>Tulis paragraf kedua disini...</p>"></textarea>
+            </div>
         </div>
 
-        <hr class="my-8">
+        <button onclick="generateCode()" class="w-full mt-8 bg-blue-700 text-white font-bold py-4 px-6 rounded-lg hover:bg-blue-800 transition shadow-lg text-lg">
+            🚀 GENERATE CODE
+        </button>
 
-        <div id="outputSection" class="hidden">
-            <h3 class="text-lg font-bold mb-2">Hasil Kode (Copy Ini):</h3>
-            <textarea id="resultCode" rows="10" class="w-full bg-gray-900 text-green-400 font-mono p-4 rounded-lg text-sm" readonly></textarea>
-            
-            <button onclick="copyToClipboard()" class="mt-4 bg-gray-200 text-gray-800 font-bold py-2 px-4 rounded hover:bg-gray-300">
-                📋 Copy Kode
-            </button>
-            <p class="text-sm text-gray-500 mt-2">Setelah dicopy, paste kode di atas ke file <b>blog.html</b> di bagian bawah artikel terakhir.</p>
+        <div id="outputSection" class="hidden mt-8 pt-8 border-t-2 border-dashed border-slate-300">
+            <h3 class="text-lg font-bold mb-2 text-slate-700">Hasil Kode (Copy & Paste ke blog.html):</h3>
+            <div class="relative">
+                <textarea id="resultCode" rows="10" class="w-full bg-slate-800 text-green-400 font-mono p-4 rounded-lg text-sm" readonly></textarea>
+                <button onclick="copyToClipboard()" class="absolute top-2 right-2 bg-white text-slate-800 text-xs font-bold py-1 px-3 rounded hover:bg-slate-200">
+                    COPY
+                </button>
+            </div>
         </div>
 
     </div>
@@ -55,23 +74,55 @@
         function generateCode() {
             const judul = document.getElementById('judul').value;
             const kategori = document.getElementById('kategori').value;
-            const ringkasan = document.getElementById('ringkasan').value;
+            const gambar = document.getElementById('gambar').value;
+            const youtube = document.getElementById('youtube').value;
+            const konten = document.getElementById('konten').value;
 
-            // Tentukan warna kategori
-            let colorClass = "text-blue-600";
-            if(kategori === 'TUTORIAL') colorClass = "text-green-600";
-            if(kategori === 'REGULASI') colorClass = "text-red-600";
-            if(kategori === 'KARIR') colorClass = "text-purple-600";
+            // Warna Kategori
+            let colorClass = "text-blue-600 border-blue-600";
+            if(kategori === 'TUTORIAL') colorClass = "text-green-600 border-green-600";
+            if(kategori === 'REGULASI') colorClass = "text-red-600 border-red-600";
+            if(kategori === 'KARIR') colorClass = "text-purple-600 border-purple-600";
 
-            // Template HTML Artikel
+            // Logic Gambar
+            let htmlGambar = '';
+            if(gambar) {
+                htmlGambar = `
+            <div class="mb-6 rounded-lg overflow-hidden shadow-md">
+                <img src="./${gambar}" alt="${judul}" class="w-full h-64 object-cover">
+            </div>`;
+            }
+
+            // Logic YouTube
+            let htmlYoutube = '';
+            if(youtube) {
+                // Ambil ID Video dari Link
+                const videoId = youtube.split('v=')[1]?.split('&')[0];
+                if(videoId) {
+                    htmlYoutube = `
+            <div class="mb-6 aspect-w-16 aspect-h-9 rounded-lg overflow-hidden shadow-md">
+                <iframe class="w-full h-64 md:h-96" src="https://www.youtube.com/embed/${videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>`;
+                }
+            }
+
+            // Template Akhir
             const template = `
-        <article class="bg-white p-8 rounded-xl shadow-sm mb-8 border hover:border-blue-300 transition">
-            <span class="${colorClass} text-sm font-bold">${kategori}</span>
-            <h2 class="text-2xl font-bold mt-2 mb-3">${judul}</h2>
-            <p class="text-gray-600 leading-relaxed mb-4">
-                ${ringkasan}
-            </p>
-            <a href="#" class="text-blue-600 font-semibold hover:underline">Baca Selengkapnya →</a>
+        <article class="bg-white p-8 rounded-xl shadow-sm mb-12 border border-gray-100 hover:border-blue-300 transition">
+            <span class="${colorClass} border-b-2 pb-1 text-sm font-bold tracking-wider">${kategori}</span>
+            <h2 class="text-3xl font-bold mt-4 mb-6 text-gray-900 leading-tight">${judul}</h2>
+            
+            ${htmlGambar}
+            ${htmlYoutube}
+
+            <div class="prose max-w-none text-gray-600 leading-relaxed space-y-4">
+                ${konten}
+            </div>
+
+            <div class="mt-8 pt-6 border-t border-gray-100 flex justify-between items-center">
+                <span class="text-sm text-gray-400">Ditulis oleh: Ari Ramadhan</span>
+                <button class="text-blue-600 font-semibold hover:underline">Share Artikel ↗</button>
+            </div>
         </article>`;
 
             document.getElementById('resultCode').value = template;
@@ -82,7 +133,7 @@
             const copyText = document.getElementById("resultCode");
             copyText.select();
             document.execCommand("copy");
-            alert("Kode berhasil dicopy! Sekarang paste ke blog.html");
+            alert("Kode berhasil dicopy!");
         }
     </script>
 </body>
