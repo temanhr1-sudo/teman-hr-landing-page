@@ -22,7 +22,7 @@
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="index.html" class="text-sm font-medium text-gray-700 hover:text-blue-600 px-3 py-2 transition">Beranda</a>
                     <a href="toko.html" class="text-sm font-medium text-gray-700 hover:text-blue-600 px-3 py-2 transition">Toko & Tools</a>
-                    <a href="blog.html" class="text-sm font-medium text-gray-700 hover:text-blue-600 px-3 py-2 transition">Artikel</a>
+                    <a href="blog.html" class="text-sm font-medium text-blue-600 px-3 py-2 transition">Artikel</a>
                 </div>
 
                 <div class="flex items-center">
@@ -34,57 +34,82 @@
             </div>
         </div>
     </nav>
-    <header class="pt-32 pb-10 px-4 text-center bg-white">
+    <header class="pt-32 pb-10 px-4 text-center bg-white border-b border-gray-100">
         <h1 class="text-3xl font-bold mb-4">Wawasan HRD</h1>
-        <p class="text-gray-600">Tips praktis, tutorial, dan strategi manajemen SDM terbaru.</p>
+        <p class="text-gray-600 max-w-2xl mx-auto">Tips praktis, tutorial, dan strategi manajemen SDM terbaru untuk meningkatkan karir Anda.</p>
     </header>
 
     <section class="max-w-4xl mx-auto px-4 py-10">
         
-        <article class="bg-white p-8 rounded-xl shadow-sm mb-12 border border-gray-100 hover:border-blue-300 transition">
-            <span class="text-blue-600 border-blue-600 border-b-2 pb-1 text-sm font-bold tracking-wider">STRATEGI</span>
-            <h2 class="text-3xl font-bold mt-4 mb-6 text-gray-900 leading-tight">Panduan Menyusun KPI yang Fair dan Terukur</h2>
-            
-            
-            <div class="mb-6 rounded-lg overflow-hidden shadow-md">
-             <img src="gambar/kpi-meeting.png" alt="Panduan Menyusun KPI..." class="w-full h-auto rounded-lg">
+        <article class="bg-white p-8 rounded-xl shadow-sm mb-12 border border-gray-100 hover:border-blue-300 transition transform hover:-translate-y-1 duration-300">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="text-blue-600 bg-blue-50 px-3 py-1 rounded-full text-xs font-bold tracking-wider">STRATEGI</span>
+                <span class="text-gray-400 text-xs">5 Feb 2026</span>
             </div>
             
-
+            <h2 class="text-3xl font-bold mb-6 text-gray-900 leading-tight hover:text-blue-600 transition cursor-pointer">Panduan Menyusun KPI yang Fair dan Terukur</h2>
+            
+            <div class="mb-6 rounded-lg overflow-hidden shadow-md bg-gray-200">
+             <img src="gambar/kpi-meeting.png" onerror="this.src='https://placehold.co/800x400/e2e8f0/1e40af?text=Ilustrasi+KPI'" alt="Panduan Menyusun KPI..." class="w-full h-auto rounded-lg object-cover">
+            </div>
+            
             <div class="prose max-w-none text-gray-600 leading-relaxed space-y-4">
                 <p>KPI (Key Performance Indicator) seringkali menjadi momok bagi karyawan karena dianggap tidak adil. Padahal, jika disusun dengan benar, KPI justru membantu karyawan memahami apa yang diharapkan perusahaan dari mereka.</p>
-
-<p>Kesalahan terbesar HRD saat menyusun KPI adalah <b>terlalu banyak indikator</b>. Idealnya, satu posisi cukup memiliki 5-7 KPI utama. Jika lebih dari itu, karyawan akan kehilangan fokus.</p>
-
-<p>Gunakan metode SMART (Specific, Measurable, Achievable, Relevant, Time-bound). Jangan membuat target "Meningkatkan Penjualan", tapi buatlah "Meningkatkan Penjualan sebesar 10% dalam Q1".</p>
+                <p>Kesalahan terbesar HRD saat menyusun KPI adalah <b>terlalu banyak indikator</b>. Idealnya, satu posisi cukup memiliki 5-7 KPI utama. Jika lebih dari itu, karyawan akan kehilangan fokus.</p>
             </div>
 
             <div class="mt-8 pt-6 border-t border-gray-100 flex justify-between items-center">
-                <span class="text-sm text-gray-400">Ditulis oleh: Ari Ramadhan</span>
-                <button class="text-blue-600 font-semibold hover:underline">Share Artikel ↗</button>
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-full bg-gray-300"></div>
+                    <span class="text-sm font-semibold text-gray-700">Ari Ramadhan</span>
+                </div>
+                <button class="text-blue-600 font-semibold hover:underline flex items-center gap-1">Baca Selengkapnya <span>→</span></button>
             </div>
         </article>
-        <article class="bg-white p-8 rounded-xl shadow-sm mb-8 border hover:border-blue-300 transition">
-            <span class="text-blue-600 text-sm font-bold">STRATEGI</span>
-            <h2 class="text-2xl font-bold mt-2 mb-3">Mengapa Analisis Data HR Itu Penting?</h2>
-            <p class="text-gray-600 leading-relaxed mb-4">
-                Data Driven HR bukan sekadar tren, melainkan kebutuhan strategis bisnis masa kini. Keputusan promosi, rekrutmen, dan retensi karyawan tidak boleh lagi hanya mengandalkan intuisi...
-            </p>
-            <a href="#" class="text-blue-600 font-semibold hover:underline">Baca Selengkapnya →</a>
-        </article>
 
-        <div class="bg-gray-100 p-4 text-center text-gray-400 text-sm my-8 rounded">
-            [Space Iklan Google]
+        <div class="grid md:grid-cols-2 gap-8">
+
+            <article class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                <span class="text-green-600 bg-green-50 px-2 py-1 rounded text-xs font-bold mb-3 inline-block">TUTORIAL</span>
+                <h2 class="text-xl font-bold mb-3 text-gray-800 hover:text-blue-600 cursor-pointer">Cara Menghitung Tingkat Absensi yang Benar</h2>
+                <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                    Rumus dasar menghitung persentase kehadiran adalah: (Jumlah Kehadiran Aktual ÷ Jumlah Hari Kerja Efektif) x 100%. Jangan sampai salah hitung cuti...
+                </p>
+                <a href="#" class="text-blue-600 text-sm font-semibold hover:underline">Baca Selengkapnya →</a>
+            </article>
+
+            <article class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                <span class="text-purple-600 bg-purple-50 px-2 py-1 rounded text-xs font-bold mb-3 inline-block">KARIR</span>
+                <h2 class="text-xl font-bold mb-3 text-gray-800 hover:text-blue-600 cursor-pointer">5 Skill Wajib HR Generalist di Tahun 2026</h2>
+                <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                    Selain administrasi, HR masa kini dituntut paham Data Analytics dan Tech Savvy. Simak skill apa saja yang akan menaikkan nilai tawar Anda.
+                </p>
+                <a href="#" class="text-blue-600 text-sm font-semibold hover:underline">Baca Selengkapnya →</a>
+            </article>
+
+            <article class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                <span class="text-red-600 bg-red-50 px-2 py-1 rounded text-xs font-bold mb-3 inline-block">PAYROLL</span>
+                <h2 class="text-xl font-bold mb-3 text-gray-800 hover:text-blue-600 cursor-pointer">Update PPh 21 TER (Tarif Efektif Rata-Rata)</h2>
+                <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                    Bingung dengan potongan pajak bulanan yang berubah-ubah? Pahami skema TER A, B, dan C agar tidak salah potong gaji karyawan.
+                </p>
+                <a href="#" class="text-blue-600 text-sm font-semibold hover:underline">Baca Selengkapnya →</a>
+            </article>
+
+            <article class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                <span class="text-blue-600 bg-blue-50 px-2 py-1 rounded text-xs font-bold mb-3 inline-block">STRATEGI</span>
+                <h2 class="text-xl font-bold mb-3 text-gray-800 hover:text-blue-600 cursor-pointer">Mengapa Analisis Data HR Itu Penting?</h2>
+                <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                    Data Driven HR bukan sekadar tren. Keputusan promosi dan rekrutmen tidak boleh lagi hanya mengandalkan intuisi semata.
+                </p>
+                <a href="#" class="text-blue-600 text-sm font-semibold hover:underline">Baca Selengkapnya →</a>
+            </article>
+
         </div>
 
-        <article class="bg-white p-8 rounded-xl shadow-sm mb-8 border hover:border-blue-300 transition">
-            <span class="text-green-600 text-sm font-bold">TUTORIAL</span>
-            <h2 class="text-2xl font-bold mt-2 mb-3">Cara Menghitung Tingkat Absensi yang Benar</h2>
-            <p class="text-gray-600 leading-relaxed mb-4">
-                Rumus dasar menghitung persentase kehadiran adalah: (Jumlah Kehadiran Aktual ÷ Jumlah Hari Kerja Efektif) x 100%. Meskipun terdengar sederhana...
-            </p>
-            <a href="#" class="text-blue-600 font-semibold hover:underline">Baca Selengkapnya →</a>
-        </article>
+        <div class="bg-gray-100 p-6 text-center text-gray-400 text-sm my-12 rounded-xl border border-dashed border-gray-300">
+            [Space Iklan Google Adsense]
+        </div>
 
     </section>
 
