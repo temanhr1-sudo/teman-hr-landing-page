@@ -18,17 +18,14 @@ const articles = [
         `
     },
     {
-        id: "hitung-absensi",
+        id: "artikel/artikel-panduan-lengkap-manajemen-absensi-rumus-regulasi-dan-strategi-menurunkan-tingkat-mangkir.html", // Link lengkap dengan folder
         category: "TUTORIAL",
-        date: "6 Feb 2026",
-        title: "Cara Menghitung Tingkat Absensi yang Benar",
+        date: "7 Feb 2026",
+        title: "Panduan Lengkap Manajemen Absensi: Rumus, Regulasi, dan Strategi Menurunkan Tingkat Mangkir",
         author: "Ari Ramadhan",
-        image: "gambar/absensi.jpg", // Ganti dengan gambar yg ada
-        summary: "Rumus dasar menghitung persentase kehadiran adalah jumlah kehadiran aktual dibagi hari kerja efektif.",
-        content: `
-            <p>Rumus tingkat kehadiran sangat penting untuk evaluasi produktivitas...</p>
-            <p>Rumusnya adalah: (Jml Hadir / Jml Hari Kerja) x 100%.</p>
-        `
-    }
+        image: "gambar/absensi-team.png", // Gambar tetap link normal (root)
+        summary: "Absensi bukan sekadar datang dan pulang. Pelajari cara menghitung Bradford Factor, regulasi jam kerja menurut UU Cipta Kerja, dan strategi psikologis mengatasi karyawan yang sering mangkir.",
+        isExternal: true
+    },
     // --> CUKUP TAMBAH DATA DI SINI UNTUK ARTIKEL BARU
 ];
