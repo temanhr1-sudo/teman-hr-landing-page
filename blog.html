@@ -1,24 +1,100 @@
-<script src="data-artikel.js"></script>
-<script>
-    const container = document.getElementById('article-container');
-    
-    // Loop data dari file data-artikel.js
-    articles.forEach(item => {
-        // Tentukan link tujuan
-        // Jika item.id berisi ".html", berarti file terpisah. 
-        // Jika tidak, kita asumsikan link manual (baca.html?id=...)
-        let linkUrl = item.id.includes('.html') ? item.id : `baca.html?id=${item.id}`;
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artikel & Wawasan HR - Teman HR</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
 
-        const card = `
-            <article class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
-                <span class="text-blue-600 bg-blue-50 px-2 py-1 rounded text-xs font-bold mb-3 inline-block">${item.category}</span>
-                <a href="${linkUrl}">
-                    <h2 class="text-xl font-bold mb-3 text-gray-800 hover:text-blue-600 cursor-pointer">${item.title}</h2>
-                </a>
-                <p class="text-gray-600 text-sm leading-relaxed mb-4">${item.summary}</p>
-                <a href="${linkUrl}" class="text-blue-600 text-sm font-semibold hover:underline">Baca Selengkapnya →</a>
-            </article>
-        `;
-        container.innerHTML += card;
-    });
-</script>
+    <nav class="bg-white border-b border-gray-100 fixed w-full z-50 top-0 backdrop-blur-md bg-opacity-90">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-blue-600">Teman<span class="text-gray-900">HR</span></a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-sm font-medium text-gray-700 hover:text-blue-600 px-3 py-2 transition">Beranda</a>
+                    <a href="toko.html" class="text-sm font-medium text-gray-700 hover:text-blue-600 px-3 py-2 transition">Toko & Tools</a>
+                    <a href="blog.html" class="text-sm font-medium text-blue-600 px-3 py-2 transition">Artikel</a>
+                </div>
+                <div class="flex items-center">
+                    <a href="https://app.temanhr.my.id" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-bold rounded-full text-white bg-blue-600 hover:bg-blue-700 shadow-md transition transform hover:-translate-y-0.5">Masuk Aplikasi</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="pt-32 pb-10 px-4 text-center bg-white border-b border-gray-100">
+        <h1 class="text-3xl font-bold mb-4">Wawasan HRD</h1>
+        <p class="text-gray-600 max-w-2xl mx-auto">Tips praktis, tutorial, dan strategi manajemen SDM terbaru.</p>
+    </header>
+
+    <section class="max-w-4xl mx-auto px-4 py-10">
+        
+        <article class="bg-white p-8 rounded-xl shadow-sm mb-12 border border-gray-100 hover:border-blue-300 transition transform hover:-translate-y-1 duration-300">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="text-blue-600 bg-blue-50 px-3 py-1 rounded-full text-xs font-bold tracking-wider">STRATEGI</span>
+                <span class="text-gray-400 text-xs">5 Feb 2026</span>
+            </div>
+            <a href="artikel-kpi.html">
+                <h2 class="text-3xl font-bold mb-6 text-gray-900 leading-tight hover:text-blue-600 transition cursor-pointer">Panduan Menyusun KPI yang Fair dan Terukur</h2>
+            </a>
+            <div class="mb-6 rounded-lg overflow-hidden shadow-md bg-gray-200">
+             <a href="artikel-kpi.html">
+                <img src="gambar/kpi-meeting.png" onerror="this.src='https://placehold.co/800x400/e2e8f0/1e40af?text=Ilustrasi+KPI'" alt="Panduan Menyusun KPI" class="w-full h-auto rounded-lg object-cover hover:opacity-90 transition">
+             </a>
+            </div>
+            <div class="prose max-w-none text-gray-600 leading-relaxed space-y-4">
+                <p>KPI (Key Performance Indicator) seringkali menjadi momok bagi karyawan karena dianggap tidak adil...</p>
+            </div>
+            <div class="mt-8 pt-6 border-t border-gray-100 flex justify-between items-center">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center text-xs font-bold text-gray-500">AR</div>
+                    <span class="text-sm font-semibold text-gray-700">Ari Ramadhan</span>
+                </div>
+                <a href="artikel-kpi.html" class="text-blue-600 font-semibold hover:underline flex items-center gap-1">Baca Selengkapnya <span>→</span></a>
+            </div>
+        </article>
+
+        <div id="article-container" class="grid md:grid-cols-2 gap-8">
+            </div>
+
+    </section>
+
+    <footer class="bg-gray-900 text-white py-8 text-center mt-10">
+        <p>&copy; 2026 Teman HR. All rights reserved.</p>
+    </footer>
+
+    <script src="data-artikel.js"></script>
+    <script>
+        const container = document.getElementById('article-container');
+        
+        // Cek dulu apakah container ada biar gak error null
+        if (container && typeof articles !== 'undefined') {
+            
+            articles.forEach(item => {
+                // Tentukan link tujuan (File HTML terpisah vs Halaman Baca Default)
+                let linkUrl = item.isExternal ? item.id : `baca.html?id=${item.id}`;
+
+                const card = `
+                    <article class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                        <span class="text-blue-600 bg-blue-50 px-2 py-1 rounded text-xs font-bold mb-3 inline-block">${item.category}</span>
+                        <a href="${linkUrl}">
+                            <h2 class="text-xl font-bold mb-3 text-gray-800 hover:text-blue-600 cursor-pointer">${item.title}</h2>
+                        </a>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">${item.summary}</p>
+                        <a href="${linkUrl}" class="text-blue-600 text-sm font-semibold hover:underline">Baca Selengkapnya →</a>
+                    </article>
+                `;
+                container.innerHTML += card;
+            });
+
+        } else {
+            console.error("Container 'article-container' tidak ditemukan atau data-artikel.js belum loading.");
+        }
+    </script>
+
+</body>
+</html>
