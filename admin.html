@@ -3,202 +3,196 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin V5.1 - Fixed</title>
+    <title>Admin Generator - Teman HR</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        .code-block { background: #1e293b; color: #4ade80; font-family: monospace; padding: 1rem; border-radius: 0.5rem; width: 100%; height: 200px; font-size: 0.85rem; }
-    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.7/beautify-html.min.js"></script>
 </head>
-<body class="bg-slate-100 p-8 font-sans">
+<body class="bg-slate-900 text-slate-200 font-sans min-h-screen p-8">
 
-    <div class="max-w-6xl mx-auto bg-white p-8 rounded-xl shadow-xl border border-slate-200">
-        <h1 class="text-3xl font-bold text-blue-800 mb-2">📂 Admin V5.1 (Multi-Folder Fixed)</h1>
-        <p class="text-slate-500 mb-8">Otomatis mengatur path untuk struktur: <code>root</code>, folder <code>artikel/</code>, dan folder <code>gambar/</code>.</p>
-        
+    <div class="max-w-6xl mx-auto">
+        <h1 class="text-3xl font-bold mb-2 text-white">⚡ Admin Generator Artikel</h1>
+        <p class="text-slate-400 mb-8">Isi form di kiri, lalu copy kode di kanan ke VS Code.</p>
+
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
             
-            <div class="space-y-5">
-                <div class="bg-blue-50 p-4 rounded-lg border border-blue-100">
-                    <label class="block text-sm font-bold mb-1 text-blue-800">1. Nama File Artikel</label>
-                    <div class="flex items-center">
-                        <input type="text" id="filename" class="w-full border p-2 rounded-l text-sm" placeholder="cara-hitung-kpi">
-                        <span class="bg-blue-200 text-blue-800 px-3 py-2 rounded-r text-sm font-bold">.html</span>
+            <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 h-fit">
+                <h2 class="text-xl font-bold mb-4 text-blue-400">1. Input Data Artikel</h2>
+                
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Judul Artikel</label>
+                        <input type="text" id="inputTitle" oninput="generateSlug()" class="w-full bg-slate-900 border border-slate-600 rounded px-3 py-2 focus:border-blue-500 outline-none" placeholder="Contoh: Cara Menghitung PPh 21">
                     </div>
-                    <p class="text-[10px] text-blue-600 mt-1">*Nanti simpan di folder <b>/artikel</b>.</p>
-                </div>
 
-                <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-100">
-                    <label class="block text-sm font-bold mb-1 text-yellow-800">2. Nama File Gambar</label>
-                    <input type="text" id="gambar" class="w-full border p-2 rounded text-sm" placeholder="foto-rapat.jpg">
-                    <p class="text-[10px] text-yellow-700 mt-1">*Pastikan file sudah ada di folder <b>/gambar</b>.</p>
-                </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Kategori</label>
+                            <select id="inputCategory" class="w-full bg-slate-900 border border-slate-600 rounded px-3 py-2">
+                                <option value="STRATEGI">STRATEGI</option>
+                                <option value="TUTORIAL">TUTORIAL</option>
+                                <option value="KARIR">KARIR</option>
+                                <option value="PAYROLL">PAYROLL</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Tanggal</label>
+                            <input type="text" id="inputDate" class="w-full bg-slate-900 border border-slate-600 rounded px-3 py-2" placeholder="Ex: 5 Feb 2026">
+                        </div>
+                    </div>
 
-                <div>
-                    <label class="block text-sm font-bold mb-1">Judul Artikel</label>
-                    <input type="text" id="judul" class="w-full border p-2 rounded" placeholder="Judul...">
-                </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Penulis</label>
+                        <input type="text" id="inputAuthor" class="w-full bg-slate-900 border border-slate-600 rounded px-3 py-2" value="Ari Ramadhan">
+                    </div>
 
-                <div>
-                    <label class="block text-sm font-bold mb-1">Kategori</label>
-                    <select id="kategori" class="w-full border p-2 rounded">
-                        <option value="STRATEGI">STRATEGI</option>
-                        <option value="TUTORIAL">TUTORIAL</option>
-                        <option value="KARIR">KARIR</option>
-                        <option value="REGULASI">REGULASI</option>
-                    </select>
-                </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Nama File Gambar (di folder gambar/)</label>
+                        <input type="text" id="inputImage" class="w-full bg-slate-900 border border-slate-600 rounded px-3 py-2" placeholder="contoh: kpi-meeting.png">
+                    </div>
 
-                <div>
-                    <label class="block text-sm font-bold mb-1">Ringkasan (Intro)</label>
-                    <textarea id="ringkasan" rows="2" class="w-full border p-2 rounded text-sm"></textarea>
-                </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Nama File HTML (Otomatis)</label>
+                        <input type="text" id="inputSlug" class="w-full bg-slate-700 border border-slate-600 rounded px-3 py-2 text-slate-400 cursor-not-allowed" readonly>
+                    </div>
 
-                 <div>
-                    <label class="block text-sm font-bold mb-1">Isi Lengkap (HTML)</label>
-                    <textarea id="konten" rows="8" class="w-full border p-2 rounded font-mono text-sm" placeholder="<p>Paragraf 1...</p>"></textarea>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Ringkasan (Untuk Card di Blog)</label>
+                        <textarea id="inputSummary" rows="3" class="w-full bg-slate-900 border border-slate-600 rounded px-3 py-2" placeholder="Tulis 1-2 kalimat menarik..."></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Isi Artikel (Format HTML)</label>
+                        <p class="text-xs text-slate-500 mb-2">Gunakan tag &lt;p&gt;, &lt;h3&gt;, &lt;ul&gt;.</p>
+                        <textarea id="inputContent" rows="10" class="w-full bg-slate-900 border border-slate-600 rounded px-3 py-2 font-mono text-sm" placeholder="<p>Paragraf pertama...</p>&#10;&#10;<h3>Sub Judul</h3>&#10;<p>Paragraf kedua...</p>"></textarea>
+                    </div>
+
+                    <button onclick="generateCode()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition mt-4">
+                        🚀 GENERATE CODE
+                    </button>
                 </div>
             </div>
 
-            <div class="space-y-6">
-                <button onclick="generateCode()" class="w-full bg-blue-700 text-white font-bold py-4 rounded-lg hover:bg-blue-800 transition shadow-lg">
-                    🚀 GENERATE KODE V5
-                </button>
-
-                <div>
-                    <div class="flex justify-between items-center mb-1">
-                        <label class="font-bold text-sm text-slate-700">A. Paste ke `blog.html` (Preview)</label>
-                        <button onclick="copyToClipboard('resultPreview')" class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded hover:bg-blue-200 font-bold">Copy A</button>
-                    </div>
-                    <textarea id="resultPreview" class="code-block" readonly></textarea>
+            <div class="space-y-8">
+                
+                <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 relative">
+                    <h2 class="text-xl font-bold mb-2 text-green-400">Output 1: Copy ke `data-artikel.js`</h2>
+                    <p class="text-xs text-slate-400 mb-4">Tambahkan (paste) kode ini ke dalam array di file data-artikel.js</p>
+                    <button onclick="copyToClipboard('outputJS')" class="absolute top-6 right-6 bg-slate-700 hover:bg-slate-600 px-3 py-1 rounded text-xs">Copy</button>
+                    <textarea id="outputJS" class="w-full h-40 bg-slate-950 text-green-400 font-mono text-xs p-4 rounded border border-slate-700 focus:outline-none" readonly></textarea>
                 </div>
 
-                <div>
-                    <div class="flex justify-between items-center mb-1">
-                        <label class="font-bold text-sm text-slate-700">B. Paste ke File Baru (Dalam Folder Artikel)</label>
-                        <button onclick="copyToClipboard('resultFull')" class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded hover:bg-green-200 font-bold">Copy B</button>
+                <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 relative">
+                    <h2 class="text-xl font-bold mb-2 text-purple-400">Output 2: Buat File HTML Baru</h2>
+                    <p class="text-xs text-slate-400 mb-4">Buat file baru dengan nama di bawah, lalu paste kode ini.</p>
+                    <div class="mb-2">
+                        <span class="text-xs font-bold text-slate-300">Nama File: </span>
+                        <span id="displayFileName" class="text-xs text-yellow-400 font-mono">artikel-baru.html</span>
                     </div>
-                    <textarea id="resultFull" class="code-block" readonly></textarea>
+                    <button onclick="copyToClipboard('outputHTML')" class="absolute top-6 right-6 bg-slate-700 hover:bg-slate-600 px-3 py-1 rounded text-xs">Copy</button>
+                    <textarea id="outputHTML" class="w-full h-96 bg-slate-950 text-purple-200 font-mono text-xs p-4 rounded border border-slate-700 focus:outline-none" readonly></textarea>
                 </div>
+
             </div>
         </div>
     </div>
 
     <script>
+        function generateSlug() {
+            const title = document.getElementById('inputTitle').value;
+            const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+            document.getElementById('inputSlug').value = 'artikel-' + slug + '.html';
+            document.getElementById('displayFileName').innerText = 'artikel-' + slug + '.html';
+        }
+
         function generateCode() {
-            const filename = document.getElementById('filename').value.replace(/\s+/g, '-').toLowerCase();
-            const judul = document.getElementById('judul').value;
-            const kategori = document.getElementById('kategori').value;
-            const gambar = document.getElementById('gambar').value;
-            const ringkasan = document.getElementById('ringkasan').value;
-            const konten = document.getElementById('konten').value;
+            // AMBIL DATA
+            const title = document.getElementById('inputTitle').value;
+            const category = document.getElementById('inputCategory').value;
+            const date = document.getElementById('inputDate').value;
+            const author = document.getElementById('inputAuthor').value;
+            const image = document.getElementById('inputImage').value;
+            const slug = document.getElementById('inputSlug').value; // Ini nama filenya
+            const summary = document.getElementById('inputSummary').value;
+            const content = document.getElementById('inputContent').value;
 
-            // WARNA KATEGORI
-            let colorClass = "text-blue-600 bg-blue-50";
-            if(kategori === 'TUTORIAL') colorClass = "text-green-600 bg-green-50";
-            if(kategori === 'REGULASI') colorClass = "text-red-600 bg-red-50";
-            if(kategori === 'KARIR') colorClass = "text-purple-600 bg-purple-50";
-
-            // LOGIC PATH GAMBAR
-            let imgTagCard = '';
-            let imgTagFull = '';
+            // 1. GENERATE JS OBJECT
+            const jsCode = `    {
+        id: "${slug}", // Link ke file HTML
+        category: "${category}",
+        date: "${date}",
+        title: "${title}",
+        author: "${author}",
+        image: "gambar/${image}",
+        summary: "${summary}",
+        isExternal: true // Penanda bahwa ini file HTML terpisah
+    },`;
             
-            if(gambar) {
-                // Di blog.html (Root) -> Masuk ke folder gambar -> "gambar/foto.jpg"
-                imgTagCard = `<img src="gambar/${gambar}" alt="${judul}" class="w-full h-48 object-cover">`;
-                
-                // Di artikel/file.html (Dalam Folder) -> Keluar dulu (..) -> Masuk gambar -> "../gambar/foto.jpg"
-                imgTagFull = `<div class="mb-8 rounded-xl overflow-hidden shadow-lg"><img src="../gambar/${gambar}" alt="${judul}" class="w-full object-cover max-h-[500px]"></div>`;
-            } else {
-                imgTagCard = `<div class="w-full h-48 bg-gray-200 flex items-center justify-center text-gray-400">No Image</div>`;
-            }
+            document.getElementById('outputJS').value = jsCode;
 
-            // 1. KODE PREVIEW
-            const codePreview = `
-        <article class="bg-white rounded-xl shadow-sm border hover:shadow-md transition overflow-hidden mb-8 flex flex-col md:flex-row">
-            <div class="md:w-1/3">
-                ${imgTagCard}
-            </div>
-            <div class="p-6 md:w-2/3 flex flex-col justify-between">
-                <div>
-                    <span class="${colorClass} px-2 py-1 rounded text-xs font-bold tracking-wider mb-2 inline-block">${kategori}</span>
-                    <h2 class="text-xl font-bold mb-3 text-gray-900 leading-tight">
-                        <a href="artikel/${filename}.html" class="hover:text-blue-600 transition">${judul}</a>
-                    </h2>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4">
-                        ${ringkasan}
-                    </p>
-                </div>
-                <a href="artikel/${filename}.html" class="text-blue-600 font-bold text-sm hover:underline flex items-center gap-1">
-                    Baca Selengkapnya →
-                </a>
-            </div>
-        </article>`;
-
-            // 2. KODE FULL PAGE (Perhatikan tanda backslash \ sebelum script untuk mencegah error)
-            const codeFull = `<!DOCTYPE html>
+            // 2. GENERATE FULL HTML
+            let htmlCode = `<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>${judul} - Teman HR</title>
+    <title>${title} - Teman HR</title>
     <script src="https://cdn.tailwindcss.com"><\/script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9004113328614297" crossorigin="anonymous"><\/script>
 </head>
-<body class="bg-slate-50 text-gray-800 font-sans">
+<body class="bg-gray-50 text-gray-800 font-sans">
 
-    <nav class="bg-white border-b border-gray-100 fixed w-full z-50 top-0">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex-shrink-0 flex items-center">
-                    <a href="../index.html" class="text-2xl font-bold text-blue-600">Teman<span class="text-gray-900">HR</span></a>
-                </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="../index.html" class="text-sm font-medium text-gray-700 hover:text-blue-600 px-3 py-2">Beranda</a>
-                    <a href="../toko.html" class="text-sm font-medium text-gray-700 hover:text-blue-600 px-3 py-2">Toko & Tools</a>
-                    <a href="../blog.html" class="text-sm font-medium text-blue-600 px-3 py-2">Artikel</a>
-                </div>
-                <div class="flex items-center">
-                    <a href="https://app.temanhr.my.id" class="px-6 py-2.5 text-sm font-bold rounded-full text-white bg-blue-600 hover:bg-blue-700 transition">Masuk Aplikasi</a>
-                </div>
-            </div>
+    <nav class="bg-white border-b border-gray-100 sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto px-4 h-16 flex justify-between items-center">
+            <a href="blog.html" class="text-gray-500 hover:text-blue-600 flex items-center gap-2 font-medium">
+                ← Kembali ke Blog
+            </a>
+            <a href="index.html" class="text-xl font-bold text-blue-600">Teman<span class="text-gray-900">HR</span></a>
         </div>
     </nav>
 
-    <article class="pt-32 pb-16 px-4">
-        <div class="max-w-3xl mx-auto bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-gray-100">
-            <a href="../blog.html" class="text-gray-400 text-sm hover:text-blue-600 mb-6 inline-block">← Kembali ke Artikel</a>
+    <article class="max-w-3xl mx-auto px-4 py-12">
+        
+        <header class="mb-8 text-center">
+            <span class="text-blue-600 bg-blue-50 px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase mb-4 inline-block">${category}</span>
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-4">${title}</h1>
             
-            <span class="${colorClass} px-3 py-1 rounded-full text-xs font-bold tracking-wider mb-4 inline-block">${kategori}</span>
-            <h1 class="text-3xl md:text-4xl font-extrabold mb-6 text-gray-900 leading-tight">${judul}</h1>
-            
-            ${imgTagFull}
-
-            <div class="prose prose-lg max-w-none text-gray-600 leading-relaxed space-y-6">
-                ${konten}
+            <div class="flex justify-center items-center gap-4 text-gray-500 text-sm">
+                <span>Ditulis oleh: <b>${author}</b></span>
+                <span>•</span>
+                <span>${date}</span>
             </div>
+        </header>
 
-            <div class="mt-12 pt-8 border-t border-gray-100">
-                <p class="text-sm text-gray-400">Ditulis oleh: Ari Ramadhan</p>
-            </div>
+        <div class="mb-10 rounded-xl overflow-hidden shadow-lg">
+            <img src="gambar/${image}" onerror="this.src='https://placehold.co/800x400/e2e8f0/1e40af?text=No+Image'" alt="${title}" class="w-full h-auto">
         </div>
+
+        <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+            ${content}
+        </div>
+
+        <div class="mt-12 p-6 bg-blue-50 rounded-xl border border-blue-100 text-center">
+            <h4 class="font-bold text-blue-800 mb-2">Ingin Tools HR Otomatis?</h4>
+            <p class="text-sm text-blue-600 mb-4">Kami punya tools Excel dan E-Book premium untuk HRD.</p>
+            <a href="toko.html" class="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-blue-700 transition">Lihat Toko →</a>
+        </div>
+
     </article>
 
-    <footer class="bg-gray-900 text-white py-8 text-center mt-10">
+    <footer class="bg-gray-900 text-white py-8 text-center">
         <p>&copy; 2026 Teman HR. All rights reserved.</p>
     </footer>
 
 </body>
 </html>`;
 
-            document.getElementById('resultPreview').value = codePreview;
-            document.getElementById('resultFull').value = codeFull;
+            document.getElementById('outputHTML').value = htmlCode;
         }
 
-        function copyToClipboard(elementId) {
-            const copyText = document.getElementById(elementId);
-            copyText.select();
-            document.execCommand("copy");
-            alert("Kode berhasil dicopy!");
+        function copyToClipboard(id) {
+            const el = document.getElementById(id);
+            el.select();
+            document.execCommand('copy');
+            alert('Kode berhasil dicopy!');
         }
     </script>
 </body>

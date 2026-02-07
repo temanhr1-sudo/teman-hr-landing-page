@@ -1,130 +1,24 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artikel & Wawasan HR - Teman HR</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-50 text-gray-800 font-sans">
+<script src="data-artikel.js"></script>
+<script>
+    const container = document.getElementById('article-container');
+    
+    // Loop data dari file data-artikel.js
+    articles.forEach(item => {
+        // Tentukan link tujuan
+        // Jika item.id berisi ".html", berarti file terpisah. 
+        // Jika tidak, kita asumsikan link manual (baca.html?id=...)
+        let linkUrl = item.id.includes('.html') ? item.id : `baca.html?id=${item.id}`;
 
-    <nav class="bg-white border-b border-gray-100 fixed w-full z-50 top-0 backdrop-blur-md bg-opacity-90">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex-shrink-0 flex items-center">
-                    <a href="index.html" class="text-2xl font-bold text-blue-600">Teman<span class="text-gray-900">HR</span></a>
-                </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="index.html" class="text-sm font-medium text-gray-700 hover:text-blue-600 px-3 py-2 transition">Beranda</a>
-                    <a href="toko.html" class="text-sm font-medium text-gray-700 hover:text-blue-600 px-3 py-2 transition">Toko & Tools</a>
-                    <a href="blog.html" class="text-sm font-medium text-blue-600 px-3 py-2 transition">Artikel</a>
-                </div>
-                <div class="flex items-center">
-                    <a href="https://app.temanhr.my.id" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-bold rounded-full text-white bg-blue-600 hover:bg-blue-700 shadow-md transition transform hover:-translate-y-0.5">Masuk Aplikasi</a>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <header class="pt-32 pb-10 px-4 text-center bg-white border-b border-gray-100">
-        <h1 class="text-3xl font-bold mb-4">Wawasan HRD</h1>
-        <p class="text-gray-600 max-w-2xl mx-auto">Tips praktis, tutorial, dan strategi manajemen SDM terbaru.</p>
-    </header>
-
-    <section class="max-w-4xl mx-auto px-4 py-10">
-        
-        <article class="bg-white p-8 rounded-xl shadow-sm mb-12 border border-gray-100 hover:border-blue-300 transition transform hover:-translate-y-1 duration-300">
-            <div class="flex items-center gap-3 mb-4">
-                <span class="text-blue-600 bg-blue-50 px-3 py-1 rounded-full text-xs font-bold tracking-wider">STRATEGI</span>
-                <span class="text-gray-400 text-xs">5 Feb 2026</span>
-            </div>
-            
-            <a href="artikel-kpi.html">
-                <h2 class="text-3xl font-bold mb-6 text-gray-900 leading-tight hover:text-blue-600 transition cursor-pointer">Panduan Menyusun KPI yang Fair dan Terukur</h2>
-            </a>
-            
-            <div class="mb-6 rounded-lg overflow-hidden shadow-md bg-gray-200">
-             <a href="artikel-kpi.html">
-                <img src="gambar/kpi-meeting.png" onerror="this.src='https://placehold.co/800x400/e2e8f0/1e40af?text=Ilustrasi+KPI'" alt="Panduan Menyusun KPI" class="w-full h-auto rounded-lg object-cover hover:opacity-90 transition">
-             </a>
-            </div>
-            
-            <div class="prose max-w-none text-gray-600 leading-relaxed space-y-4">
-                <p>KPI (Key Performance Indicator) seringkali menjadi momok bagi karyawan karena dianggap tidak adil. Padahal, jika disusun dengan benar, KPI justru membantu karyawan memahami apa yang diharapkan perusahaan...</p>
-            </div>
-
-            <div class="mt-8 pt-6 border-t border-gray-100 flex justify-between items-center">
-                <div class="flex items-center gap-2">
-                    <div class="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center text-xs font-bold text-gray-500">AR</div>
-                    <span class="text-sm font-semibold text-gray-700">Ari Ramadhan</span>
-                </div>
-                
-                <div class="flex gap-4">
-                    <button onclick="shareArticle('Panduan Menyusun KPI', 'artikel-kpi.html')" class="text-gray-500 hover:text-blue-600 flex items-center gap-1 text-sm font-medium transition">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" /></svg>
-                        Share
-                    </button>
-                    <a href="artikel-kpi.html" class="text-blue-600 font-semibold hover:underline flex items-center gap-1">Baca Selengkapnya <span>→</span></a>
-                </div>
-            </div>
-        </article>
-
-        <div class="grid md:grid-cols-2 gap-8">
-
+        const card = `
             <article class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
-                <span class="text-green-600 bg-green-50 px-2 py-1 rounded text-xs font-bold mb-3 inline-block">TUTORIAL</span>
-                <h2 class="text-xl font-bold mb-3 text-gray-800 hover:text-blue-600 cursor-pointer">Cara Menghitung Tingkat Absensi yang Benar</h2>
-                <p class="text-gray-600 text-sm leading-relaxed mb-4">
-                    Rumus dasar menghitung persentase kehadiran adalah...
-                </p>
-                <div class="flex justify-between items-center mt-4">
-                    <a href="artikel-absensi.html" class="text-blue-600 text-sm font-semibold hover:underline">Baca Selengkapnya →</a>
-                    <button onclick="shareArticle('Cara Hitung Absensi', 'artikel-absensi.html')" class="text-gray-400 hover:text-gray-600"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" /></svg></button>
-                </div>
+                <span class="text-blue-600 bg-blue-50 px-2 py-1 rounded text-xs font-bold mb-3 inline-block">${item.category}</span>
+                <a href="${linkUrl}">
+                    <h2 class="text-xl font-bold mb-3 text-gray-800 hover:text-blue-600 cursor-pointer">${item.title}</h2>
+                </a>
+                <p class="text-gray-600 text-sm leading-relaxed mb-4">${item.summary}</p>
+                <a href="${linkUrl}" class="text-blue-600 text-sm font-semibold hover:underline">Baca Selengkapnya →</a>
             </article>
-
-            <article class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
-                <span class="text-purple-600 bg-purple-50 px-2 py-1 rounded text-xs font-bold mb-3 inline-block">KARIR</span>
-                <h2 class="text-xl font-bold mb-3 text-gray-800 hover:text-blue-600 cursor-pointer">5 Skill Wajib HR Generalist 2026</h2>
-                <p class="text-gray-600 text-sm leading-relaxed mb-4">
-                    Selain administrasi, HR masa kini dituntut paham Data Analytics...
-                </p>
-                <div class="flex justify-between items-center mt-4">
-                    <a href="#" class="text-blue-600 text-sm font-semibold hover:underline">Baca Selengkapnya →</a>
-                    <button onclick="shareArticle('5 Skill HR', '#')" class="text-gray-400 hover:text-gray-600"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" /></svg></button>
-                </div>
-            </article>
-
-        </div>
-    </section>
-
-    <footer class="bg-gray-900 text-white py-8 text-center mt-10">
-        <p>&copy; 2026 Teman HR. All rights reserved.</p>
-    </footer>
-
-    <script>
-        async function shareArticle(title, url) {
-            const shareData = {
-                title: title,
-                text: 'Baca artikel menarik ini di Teman HR:',
-                url: window.location.origin + '/' + url // Mengambil URL lengkap
-            };
-
-            // Cek apakah browser support fitur Share native (HP biasanya support)
-            if (navigator.share) {
-                try {
-                    await navigator.share(shareData);
-                } catch (err) {
-                    console.log('Error sharing:', err);
-                }
-            } else {
-                // Fallback untuk Desktop: Copy link ke clipboard
-                navigator.clipboard.writeText(shareData.url).then(() => {
-                    alert('Link artikel berhasil disalin! Silakan paste di WhatsApp/Sosmed.');
-                });
-            }
-        }
-    </script>
-
-</body>
-</html>
+        `;
+        container.innerHTML += card;
+    });
+</script>
