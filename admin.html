@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Generator V2 (Folder Support) - Teman HR</title>
+    <title>Admin Generator V3 (Ads + Folder) - Teman HR</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-900 text-slate-200 font-sans min-h-screen p-8">
 
     <div class="max-w-6xl mx-auto">
         <div class="flex items-center gap-3 mb-2">
-            <h1 class="text-3xl font-bold text-white">⚡ Admin Generator V2</h1>
-            <span class="bg-yellow-500 text-black text-xs font-bold px-2 py-1 rounded">SUB-FOLDER MODE</span>
+            <h1 class="text-3xl font-bold text-white">⚡ Admin Generator V3</h1>
+            <span class="bg-green-500 text-black text-xs font-bold px-2 py-1 rounded">ADSENSE READY</span>
+            <span class="bg-yellow-500 text-black text-xs font-bold px-2 py-1 rounded">SUB-FOLDER</span>
         </div>
-        <p class="text-slate-400 mb-8">Khusus untuk artikel yang disimpan di dalam folder <code>/artikel/</code>.</p>
+        <p class="text-slate-400 mb-8">Otomatis menyelipkan kode iklan di posisi strategis artikel.</p>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
             
@@ -50,7 +51,6 @@
                     <div>
                         <label class="block text-sm font-medium mb-1">Nama File Gambar (di folder gambar/)</label>
                         <input type="text" id="inputImage" class="w-full bg-slate-900 border border-slate-600 rounded px-3 py-2" placeholder="contoh: kpi-meeting.png">
-                        <p class="text-xs text-slate-500 mt-1">*Pastikan gambar ada di folder root 'gambar'</p>
                     </div>
 
                     <div>
@@ -59,18 +59,17 @@
                     </div>
 
                     <div>
-                        <label class="block text-sm font-medium mb-1">Ringkasan (Untuk Card di Blog)</label>
+                        <label class="block text-sm font-medium mb-1">Ringkasan (Untuk Card)</label>
                         <textarea id="inputSummary" rows="3" class="w-full bg-slate-900 border border-slate-600 rounded px-3 py-2" placeholder="Tulis 1-2 kalimat menarik..."></textarea>
                     </div>
 
                     <div>
                         <label class="block text-sm font-medium mb-1">Isi Artikel (Format HTML)</label>
-                        <p class="text-xs text-slate-500 mb-2">Gunakan tag &lt;p&gt;, &lt;h3&gt;, &lt;ul&gt;.</p>
-                        <textarea id="inputContent" rows="10" class="w-full bg-slate-900 border border-slate-600 rounded px-3 py-2 font-mono text-sm" placeholder="<p>Paragraf pertama...</p>&#10;&#10;<h3>Sub Judul</h3>&#10;<p>Paragraf kedua...</p>"></textarea>
+                        <textarea id="inputContent" rows="10" class="w-full bg-slate-900 border border-slate-600 rounded px-3 py-2 font-mono text-sm" placeholder="<p>Paragraf pertama...</p>"></textarea>
                     </div>
 
-                    <button onclick="generateCode()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition mt-4">
-                        🚀 GENERATE CODE
+                    <button onclick="generateCode()" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-lg transition mt-4 shadow-lg border border-green-500">
+                        💰 GENERATE WITH ADS
                     </button>
                 </div>
             </div>
@@ -79,14 +78,13 @@
                 
                 <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 relative">
                     <h2 class="text-xl font-bold mb-2 text-green-400">Output 1: Copy ke `data-artikel.js`</h2>
-                    <p class="text-xs text-slate-400 mb-4">Perhatikan ID-nya sudah ada awalan 'artikel/'</p>
                     <button onclick="copyToClipboard('outputJS')" class="absolute top-6 right-6 bg-slate-700 hover:bg-slate-600 px-3 py-1 rounded text-xs">Copy</button>
                     <textarea id="outputJS" class="w-full h-40 bg-slate-950 text-green-400 font-mono text-xs p-4 rounded border border-slate-700 focus:outline-none" readonly></textarea>
                 </div>
 
                 <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 relative">
                     <h2 class="text-xl font-bold mb-2 text-purple-400">Output 2: Buat File di Folder `artikel/`</h2>
-                    <p class="text-xs text-slate-400 mb-4">Simpan file ini DI DALAM folder 'artikel'. Link sudah disesuaikan (pakai ../).</p>
+                    <p class="text-xs text-slate-400 mb-2">Kode iklan sudah otomatis terpasang di Head dan Body.</p>
                     <div class="mb-2">
                         <span class="text-xs font-bold text-slate-300">Simpan sebagai: </span>
                         <span id="displayFileName" class="text-xs text-yellow-400 font-mono">artikel/...</span>
@@ -108,7 +106,6 @@
         }
 
         function generateCode() {
-            // AMBIL DATA
             const title = document.getElementById('inputTitle').value;
             const category = document.getElementById('inputCategory').value;
             const date = document.getElementById('inputDate').value;
@@ -118,21 +115,22 @@
             const summary = document.getElementById('inputSummary').value;
             const content = document.getElementById('inputContent').value;
 
-            // 1. GENERATE JS OBJECT (ID pake folder artikel/)
+            // OUTPUT 1: JS
             const jsCode = `    {
-        id: "artikel/${filename}", // Link lengkap dengan folder
+        id: "artikel/${filename}",
         category: "${category}",
         date: "${date}",
         title: "${title}",
         author: "${author}",
-        image: "gambar/${image}", // Gambar tetap link normal (root)
+        image: "gambar/${image}",
         summary: "${summary}",
         isExternal: true
     },`;
-            
             document.getElementById('outputJS').value = jsCode;
 
-            // 2. GENERATE FULL HTML (Link pake ../)
+            // OUTPUT 2: HTML with ADSENSE
+            // Kita gunakan ID Adsense Mas Ari: ca-pub-9004113328614297
+            
             let htmlCode = `<!DOCTYPE html>
 <html lang="id">
 <head>
@@ -140,6 +138,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${title} - Teman HR</title>
     <script src="https://cdn.tailwindcss.com"><\/script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9004113328614297" crossorigin="anonymous"><\/script>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans">
 
@@ -157,7 +156,6 @@
         <header class="mb-8 text-center">
             <span class="text-blue-600 bg-blue-50 px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase mb-4 inline-block">${category}</span>
             <h1 class="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-4">${title}</h1>
-            
             <div class="flex justify-center items-center gap-4 text-gray-500 text-sm">
                 <span>Ditulis oleh: <b>${author}</b></span>
                 <span>•</span>
@@ -169,11 +167,37 @@
             <img src="../gambar/${image}" onerror="this.src='https://placehold.co/800x400/e2e8f0/1e40af?text=No+Image'" alt="${title}" class="w-full h-auto">
         </div>
 
+        <div class="my-8 p-4 bg-gray-100 rounded text-center border border-dashed border-gray-300">
+            <span class="text-xs text-gray-400 block mb-2">Advertisement</span>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-9004113328614297"
+                 data-ad-slot="auto"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            <\/script>
+        </div>
+
         <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
             ${content}
         </div>
 
-        <div class="mt-12 p-6 bg-blue-50 rounded-xl border border-blue-100 text-center">
+        <div class="my-8 p-4 bg-gray-100 rounded text-center border border-dashed border-gray-300">
+            <span class="text-xs text-gray-400 block mb-2">Advertisement</span>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-9004113328614297"
+                 data-ad-slot="auto"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            <\/script>
+        </div>
+
+        <div class="mt-8 p-6 bg-blue-50 rounded-xl border border-blue-100 text-center">
             <h4 class="font-bold text-blue-800 mb-2">Ingin Tools HR Otomatis?</h4>
             <p class="text-sm text-blue-600 mb-4">Kami punya tools Excel dan E-Book premium untuk HRD.</p>
             <a href="../toko.html" class="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-blue-700 transition">Lihat Toko →</a>
