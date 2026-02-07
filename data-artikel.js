@@ -2,7 +2,7 @@
 
 const articles = [
     {
-        id: "kpi-fair", // ID unik untuk link
+        iid: "artikel/artikel-kpi.html", // Tambahkan "artikel/" di depan
         category: "STRATEGI",
         date: "5 Feb 2026",
         title: "Panduan Menyusun KPI yang Fair dan Terukur",

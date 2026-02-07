@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Generator - Teman HR</title>
+    <title>Admin Generator V2 (Folder Support) - Teman HR</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.7/beautify-html.min.js"></script>
 </head>
 <body class="bg-slate-900 text-slate-200 font-sans min-h-screen p-8">
 
     <div class="max-w-6xl mx-auto">
-        <h1 class="text-3xl font-bold mb-2 text-white">⚡ Admin Generator Artikel</h1>
-        <p class="text-slate-400 mb-8">Isi form di kiri, lalu copy kode di kanan ke VS Code.</p>
+        <div class="flex items-center gap-3 mb-2">
+            <h1 class="text-3xl font-bold text-white">⚡ Admin Generator V2</h1>
+            <span class="bg-yellow-500 text-black text-xs font-bold px-2 py-1 rounded">SUB-FOLDER MODE</span>
+        </div>
+        <p class="text-slate-400 mb-8">Khusus untuk artikel yang disimpan di dalam folder <code>/artikel/</code>.</p>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
             
@@ -48,6 +50,7 @@
                     <div>
                         <label class="block text-sm font-medium mb-1">Nama File Gambar (di folder gambar/)</label>
                         <input type="text" id="inputImage" class="w-full bg-slate-900 border border-slate-600 rounded px-3 py-2" placeholder="contoh: kpi-meeting.png">
+                        <p class="text-xs text-slate-500 mt-1">*Pastikan gambar ada di folder root 'gambar'</p>
                     </div>
 
                     <div>
@@ -76,17 +79,17 @@
                 
                 <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 relative">
                     <h2 class="text-xl font-bold mb-2 text-green-400">Output 1: Copy ke `data-artikel.js`</h2>
-                    <p class="text-xs text-slate-400 mb-4">Tambahkan (paste) kode ini ke dalam array di file data-artikel.js</p>
+                    <p class="text-xs text-slate-400 mb-4">Perhatikan ID-nya sudah ada awalan 'artikel/'</p>
                     <button onclick="copyToClipboard('outputJS')" class="absolute top-6 right-6 bg-slate-700 hover:bg-slate-600 px-3 py-1 rounded text-xs">Copy</button>
                     <textarea id="outputJS" class="w-full h-40 bg-slate-950 text-green-400 font-mono text-xs p-4 rounded border border-slate-700 focus:outline-none" readonly></textarea>
                 </div>
 
                 <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 relative">
-                    <h2 class="text-xl font-bold mb-2 text-purple-400">Output 2: Buat File HTML Baru</h2>
-                    <p class="text-xs text-slate-400 mb-4">Buat file baru dengan nama di bawah, lalu paste kode ini.</p>
+                    <h2 class="text-xl font-bold mb-2 text-purple-400">Output 2: Buat File di Folder `artikel/`</h2>
+                    <p class="text-xs text-slate-400 mb-4">Simpan file ini DI DALAM folder 'artikel'. Link sudah disesuaikan (pakai ../).</p>
                     <div class="mb-2">
-                        <span class="text-xs font-bold text-slate-300">Nama File: </span>
-                        <span id="displayFileName" class="text-xs text-yellow-400 font-mono">artikel-baru.html</span>
+                        <span class="text-xs font-bold text-slate-300">Simpan sebagai: </span>
+                        <span id="displayFileName" class="text-xs text-yellow-400 font-mono">artikel/...</span>
                     </div>
                     <button onclick="copyToClipboard('outputHTML')" class="absolute top-6 right-6 bg-slate-700 hover:bg-slate-600 px-3 py-1 rounded text-xs">Copy</button>
                     <textarea id="outputHTML" class="w-full h-96 bg-slate-950 text-purple-200 font-mono text-xs p-4 rounded border border-slate-700 focus:outline-none" readonly></textarea>
@@ -101,7 +104,7 @@
             const title = document.getElementById('inputTitle').value;
             const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
             document.getElementById('inputSlug').value = 'artikel-' + slug + '.html';
-            document.getElementById('displayFileName').innerText = 'artikel-' + slug + '.html';
+            document.getElementById('displayFileName').innerText = 'artikel/artikel-' + slug + '.html';
         }
 
         function generateCode() {
@@ -111,25 +114,25 @@
             const date = document.getElementById('inputDate').value;
             const author = document.getElementById('inputAuthor').value;
             const image = document.getElementById('inputImage').value;
-            const slug = document.getElementById('inputSlug').value; // Ini nama filenya
+            const filename = document.getElementById('inputSlug').value;
             const summary = document.getElementById('inputSummary').value;
             const content = document.getElementById('inputContent').value;
 
-            // 1. GENERATE JS OBJECT
+            // 1. GENERATE JS OBJECT (ID pake folder artikel/)
             const jsCode = `    {
-        id: "${slug}", // Link ke file HTML
+        id: "artikel/${filename}", // Link lengkap dengan folder
         category: "${category}",
         date: "${date}",
         title: "${title}",
         author: "${author}",
-        image: "gambar/${image}",
+        image: "gambar/${image}", // Gambar tetap link normal (root)
         summary: "${summary}",
-        isExternal: true // Penanda bahwa ini file HTML terpisah
+        isExternal: true
     },`;
             
             document.getElementById('outputJS').value = jsCode;
 
-            // 2. GENERATE FULL HTML
+            // 2. GENERATE FULL HTML (Link pake ../)
             let htmlCode = `<!DOCTYPE html>
 <html lang="id">
 <head>
@@ -142,10 +145,10 @@
 
     <nav class="bg-white border-b border-gray-100 sticky top-0 z-50">
         <div class="max-w-4xl mx-auto px-4 h-16 flex justify-between items-center">
-            <a href="blog.html" class="text-gray-500 hover:text-blue-600 flex items-center gap-2 font-medium">
+            <a href="../blog.html" class="text-gray-500 hover:text-blue-600 flex items-center gap-2 font-medium">
                 ← Kembali ke Blog
             </a>
-            <a href="index.html" class="text-xl font-bold text-blue-600">Teman<span class="text-gray-900">HR</span></a>
+            <a href="../index.html" class="text-xl font-bold text-blue-600">Teman<span class="text-gray-900">HR</span></a>
         </div>
     </nav>
 
@@ -163,7 +166,7 @@
         </header>
 
         <div class="mb-10 rounded-xl overflow-hidden shadow-lg">
-            <img src="gambar/${image}" onerror="this.src='https://placehold.co/800x400/e2e8f0/1e40af?text=No+Image'" alt="${title}" class="w-full h-auto">
+            <img src="../gambar/${image}" onerror="this.src='https://placehold.co/800x400/e2e8f0/1e40af?text=No+Image'" alt="${title}" class="w-full h-auto">
         </div>
 
         <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
@@ -173,7 +176,7 @@
         <div class="mt-12 p-6 bg-blue-50 rounded-xl border border-blue-100 text-center">
             <h4 class="font-bold text-blue-800 mb-2">Ingin Tools HR Otomatis?</h4>
             <p class="text-sm text-blue-600 mb-4">Kami punya tools Excel dan E-Book premium untuk HRD.</p>
-            <a href="toko.html" class="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-blue-700 transition">Lihat Toko →</a>
+            <a href="../toko.html" class="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-blue-700 transition">Lihat Toko →</a>
         </div>
 
     </article>
