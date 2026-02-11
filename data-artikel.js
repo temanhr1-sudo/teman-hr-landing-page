@@ -2,7 +2,7 @@
 
 const articles = [
     {
-        iid: "artikel/artikel-kpi.html", // Tambahkan "artikel/" di depan
+        id: "artikel/artikel-kpi.html", // Tambahkan "artikel/" di depan
         category: "STRATEGI",
         date: "5 Feb 2026",
         title: "Panduan Menyusun KPI yang Fair dan Terukur",
@@ -31,7 +31,7 @@ const articles = [
         id: "artikel/artikel-bukan-sekadar-tukang-rekrut-transformasi-peran-hrd-menjadi-strategic-business-partner-di-era-digital.html",
         category: "STRATEGI",
         date: "7 Feb 2026",
-        title: "Bukan Sekadar "Tukang Rekrut": Transformasi Peran HRD Menjadi Strategic Business Partner di Era Digital",
+        title: "Bukan Sekadar Tukang Rekrut: Transformasi Peran HRD Menjadi Strategic Business Partner di Era Digital",
         author: "Ari Ramadhan",
         image: "gambar/absensi-team.png",
         summary: "Masih mengira tugas HRD hanya sebatas rekrutmen dan payroll? Simak panduan lengkap transformasi peran HRD modern, tantangan manajemen SDM 2026, dan kunci sukses membangun tim juara.",
