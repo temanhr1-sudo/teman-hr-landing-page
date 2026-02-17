@@ -3,129 +3,202 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teman HR - Solusi Analisis Data HRD & Personalia</title>
-    <meta name="description" content="Aplikasi HRIS gratis untuk analisis data karyawan, absensi, dan KPI. Solusi terbaik untuk HRD Indonesia.">
+    <title>Teman HR - Platform HR Analytics & Command Center Enterprise</title>
+    <meta name="description" content="Kelola Payroll, Pajak TER 2024, Analisa Jaringan Organisasi (ONA), hingga L&D Analytics dalam satu dashboard strategis.">
+    
     <script src="https://cdn.tailwindcss.com"></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9004113328614297"
-     crossorigin="anonymous"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        html { scroll-behavior: smooth; }
+    </style>
 </head>
-<body class="bg-white text-gray-800 font-sans">
-<nav class="bg-white border-b border-gray-100 fixed w-full z-50 top-0 backdrop-blur-md bg-opacity-90">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                
-                <div class="flex-shrink-0 flex items-center">
-                    <a href="index.html" class="text-2xl font-bold text-blue-600">
-                        Teman<span class="text-gray-900">HR</span>
-                    </a>
-                </div>
+<body class="bg-white text-slate-800 antialiased selection:bg-blue-100 selection:text-blue-900">
 
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="index.html" class="text-sm font-medium text-gray-700 hover:text-blue-600 px-3 py-2 transition">Beranda</a>
-                    <a href="toko.html" class="text-sm font-medium text-gray-700 hover:text-blue-600 px-3 py-2 transition">Toko & Tools</a>
-                    <a href="blog.html" class="text-sm font-medium text-gray-700 hover:text-blue-600 px-3 py-2 transition">Artikel</a>
-                </div>
-
-                <div class="flex items-center">
-                    <a href="https://app.temanhr.my.id" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-bold rounded-full text-white bg-blue-600 hover:bg-blue-700 shadow-md transition transform hover:-translate-y-0.5">
-                        Masuk Aplikasi
-                    </a>
-                </div>
-
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            
+            <div class="flex items-center gap-2">
+                <h1 class="text-2xl font-extrabold text-blue-800 tracking-tight">Teman<span class="text-slate-900">HR</span></h1>
+                <span class="bg-blue-100 text-blue-800 text-[10px] uppercase px-2 py-0.5 rounded-full font-bold tracking-wider">Enterprise</span>
             </div>
+
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#features" class="text-sm font-semibold text-slate-600 hover:text-blue-600 transition">Fitur Utama</a>
+                <a href="#panduan" class="text-sm font-semibold text-slate-600 hover:text-blue-600 transition">Panduan</a>
+                
+                <a href="/dashboard" class="bg-blue-600 text-white px-6 py-2.5 rounded-xl font-bold text-sm hover:bg-blue-700 transition shadow-lg shadow-blue-200">
+                    Masuk / Daftar
+                </a>
+            </div>
+
+            <button id="mobile-menu-btn" class="md:hidden p-2 text-slate-600 focus:outline-none">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 shadow-2xl absolute w-full left-0 top-full p-6 flex flex-col gap-4">
+            <a href="#features" class="text-base font-semibold text-slate-700 py-2 border-b border-slate-50 mobile-link">Fitur Utama</a>
+            <a href="#panduan" class="text-base font-semibold text-slate-700 py-2 border-b border-slate-50 mobile-link">Panduan Sistem</a>
+            <a href="/dashboard" class="bg-blue-600 text-white px-5 py-3.5 rounded-xl font-bold text-center mt-2 shadow-md mobile-link">
+                Masuk ke Dashboard
+            </a>
         </div>
     </nav>
-    <header class="pt-32 pb-20 px-4 text-center bg-blue-50">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Kelola Data Karyawan Jadi Lebih Mudah</h2>
-            <p class="text-xl text-gray-600 mb-8">
-                Tidak perlu pusing dengan rumus Excel yang rumit. Upload data absensi Anda, biar Teman HR yang menganalisisnya secara otomatis.
+
+    <header class="relative pt-20 pb-32 px-6 overflow-hidden">
+        <div class="absolute top-0 right-0 -mr-40 -mt-40 w-[600px] h-[600px] bg-blue-50 rounded-full blur-3xl opacity-60 -z-10"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-indigo-50 rounded-full blur-3xl opacity-60 -z-10"></div>
+
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <div class="inline-block px-4 py-1.5 rounded-full bg-blue-50 text-blue-600 text-xs font-bold tracking-widest uppercase mb-6 border border-blue-100">
+                Platform HR Terintegrasi #1 di Indonesia
+            </div>
+            <h1 class="text-4xl md:text-6xl font-black text-slate-900 leading-tight mb-6 tracking-tight">
+                Bukan Sekadar Absensi.<br/>
+                Ini <span class="text-blue-600">Command Center</span> HR Anda.
+            </h1>
+            <p class="text-lg md:text-xl text-slate-500 leading-relaxed mb-10 max-w-2xl mx-auto">
+                Tinggalkan spreadsheet manual. Kelola Payroll, Pajak TER 2026, Analisa Jaringan Organisasi (ONA), hingga L&D Analytics dalam satu dashboard strategis.
             </p>
-            <a href="https://app.temanhr.my.id" class="inline-block bg-blue-600 text-white text-lg px-8 py-4 rounded-lg font-bold shadow-lg hover:bg-blue-700 transition">
-                Coba Aplikasi Gratis →
-            </a>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="/dashboard" class="px-8 py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition shadow-xl shadow-blue-200 transform hover:-translate-y-1">
+                    Coba Gratis Sekarang
+                </a>
+                <a href="#features" class="px-8 py-4 bg-white text-slate-700 border border-slate-200 font-bold rounded-xl hover:bg-slate-50 transition shadow-sm">
+                    Pelajari Fitur
+                </a>
+            </div>
         </div>
     </header>
 
-    <div class="max-w-4xl mx-auto py-8 text-center bg-gray-100 my-8">
-        <p class="text-gray-400 text-sm">[Space Iklan Google AdSense]</p>
-    </div>
+    <section id="features" class="py-20 bg-slate-50 px-6 border-y border-slate-100">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-black text-slate-900 mb-4">Toolkit Lengkap untuk HR Modern</h2>
+                <p class="text-slate-500 max-w-2xl mx-auto">Satu platform untuk semua kebutuhan data SDM Anda, dari operasional hingga strategis.</p>
+            </div>
 
-    <section class="py-16 px-4">
-        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
-            <div class="p-6 border rounded-xl hover:shadow-md transition">
-                <h3 class="text-xl font-bold mb-3">📊 Dashboard Visual</h3>
-                <p class="text-gray-600">Ubah data angka menjadi grafik yang mudah dipahami oleh manajemen.</p>
-            </div>
-            <div class="p-6 border rounded-xl hover:shadow-md transition">
-                <h3 class="text-xl font-bold mb-3">📉 Analisis Turnover</h3>
-                <p class="text-gray-600">Deteksi tren keluar masuk karyawan sebelum terlambat.</p>
-            </div>
-            <div class="p-6 border rounded-xl hover:shadow-md transition">
-                <h3 class="text-xl font-bold mb-3">📂 Upload Excel</h3>
-                <p class="text-gray-600">Cukup export data dari mesin absen ke Excel, lalu upload ke sini.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-14 h-14 bg-green-50 text-green-600 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">💰</div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-3">Payroll & Pajak TER</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Kalkulator gaji canggih. Hitung PPh 21 TER terbaru, BPJS, Cost to Company (CTC), dan simulasi Take Home Pay secara instan.</p>
+                </div>
+                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-14 h-14 bg-yellow-50 text-yellow-600 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">🧠</div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-3">L&D Analytics</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Ukur efektivitas pelatihan dengan Model Kirkpatrick 4 Level, hitung ROI Pelatihan, dan petakan kesenjangan skill karyawan.</p>
+                </div>
+                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-14 h-14 bg-slate-800 text-white rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">🕸️</div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-3">Org. Network Analysis</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Petakan kolaborasi internal. Temukan 'Key Influencer' yang tersembunyi dan deteksi risiko 'Silo' antar departemen secara visual.</p>
+                </div>
+                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-14 h-14 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">🌍</div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-3">DEI Dashboard</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Pantau metrik Diversity, Equity, & Inclusion. Analisa kesenjangan gaji antar gender dan representasi kepemimpinan.</p>
+                </div>
+                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-14 h-14 bg-red-50 text-red-600 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">🔥</div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-3">Retention & Attrition</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Flight Risk Predictor. Deteksi potensi resign karyawan kunci berdasarkan data historis dan tingkatkan retensi talenta terbaik.</p>
+                </div>
+                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">📊</div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-3">Absensi & Data Induk</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Pencatatan kehadiran presisi, manajemen cuti, dan database master karyawan yang terintegrasi penuh dengan seluruh modul.</p>
+                </div>
             </div>
         </div>
     </section>
 
-<section class="py-20 px-4 bg-gradient-to-br from-blue-900 to-slate-900 text-white overflow-hidden">
-        <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
+    <section id="panduan" class="py-20 px-6 bg-white">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-black text-slate-900 mb-8 text-center">Transformasi Digital HR di Ujung Jari Anda</h2>
             
-            <div class="w-full md:w-1/3 flex justify-center relative">
-                <div class="absolute inset-0 bg-blue-500 blur-3xl opacity-20 rounded-full"></div>
-                <img src="gambar/HRD 101 - Sampul cover.png" alt="Ebook HRD 101" class="relative rounded-lg shadow-2xl transform rotate-3 hover:rotate-0 transition duration-500 border-4 border-white/10 w-64 md:w-full">
-            </div>
-
-            <div class="w-full md:w-2/3 text-center md:text-left">
-                <span class="inline-block bg-yellow-400 text-blue-900 text-xs font-bold px-3 py-1 rounded-full mb-4 tracking-wide">BEST SELLER</span>
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 leading-tight">HRD 101: The Modern Architect <br><span class="text-blue-300 text-2xl">(Arsitek Organisasi)</span></h2>
-                <p class="text-lg text-gray-300 mb-6 font-light">
-                    Jangan hanya jadi admin, jadilah arsitek. Pelajari cara membangun bisnis dengan struktur dan manusia yang tangguh. Panduan wajib untuk praktisi HR modern.
+            <div class="prose prose-slate max-w-none text-slate-600 leading-loose">
+                <p class="mb-6">
+                    Dalam era bisnis modern, mengandalkan insting saja tidak cukup untuk mengelola Sumber Daya Manusia (SDM). <strong>Teman HR Enterprise</strong> hadir sebagai solusi komprehensif yang mengubah data mentah menjadi wawasan strategis yang dapat ditindaklanjuti.
                 </p>
                 
-                <div class="flex flex-col md:flex-row gap-4 justify-center md:justify-start">
-                    <a href="https://lynk.id/arrivari/8l03qe7rx7qx" target="_blank" class="inline-flex items-center justify-center bg-yellow-400 text-blue-900 text-lg px-8 py-3 rounded-lg font-bold shadow-lg hover:bg-yellow-300 transition transform hover:-translate-y-1">
-                        🛒 Beli E-Book Sekarang
-                    </a>
-                </div>
-                <p class="mt-4 text-sm text-gray-400">Instant Download via Lynk.id</p>
+                <h3 class="text-xl font-bold text-slate-800 mt-10 mb-4">Mengapa Memilih HR Analytics?</h3>
+                <p class="mb-6">
+                    Banyak perusahaan terjebak dalam proses administratif yang memakan waktu, seperti menghitung Pajak Penghasilan (PPh 21) menggunakan metode Tarif Efektif Rata-rata (TER) yang baru secara manual. Melalui modul <strong>Payroll Simulator</strong>, perhitungan rumit ini diotomatisasi, memastikan kepatuhan regulasi sekaligus memberikan visibilitas penuh terhadap <em>Cost to Company</em> (CTC).
+                </p>
+
+                <h3 class="text-xl font-bold text-slate-800 mt-10 mb-4">Membangun Budaya Kolaboratif dengan ONA</h3>
+                <p class="mb-6">
+                    Salah satu fitur unggulan kami adalah <strong>Organizational Network Analysis (ONA)</strong>. Berbeda dengan bagan struktur organisasi tradisional yang kaku, ONA memetakan bagaimana komunikasi dan kolaborasi <em>sebenarnya</em> terjadi di lapangan. Sistem ini membantu HR mendeteksi departemen yang terisolasi (Silo) dan mengidentifikasi karyawan yang bertindak sebagai jembatan informasi utama (Key Influencers).
+                </p>
+
+                <h3 class="text-xl font-bold text-slate-800 mt-10 mb-4">Mengukur Investasi Pelatihan (L&D)</h3>
+                <p class="mb-6">
+                    Apakah program pelatihan yang Anda adakan benar-benar berdampak? Modul <strong>Learning & Development (L&D) Analytics</strong> kami menggunakan kerangka evaluasi Kirkpatrick 4 Level untuk memvalidasi reaksi peserta, peningkatan pengetahuan, perubahan perilaku, hingga dampak finansial (ROI) terhadap bisnis. Dipadukan dengan Matriks Kompetensi, HR dapat dengan mudah menyusun program *upskilling* yang tepat sasaran.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 text-white py-16 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 mb-12 border-b border-slate-800 pb-12">
+            <div class="col-span-1 md:col-span-2">
+                <h2 class="text-2xl font-extrabold text-white mb-4">Teman<span class="text-blue-500">HR</span></h2>
+                <p class="text-sm text-slate-400 max-w-sm leading-relaxed mb-6">
+                    Misi kami adalah mendemokratisasi analitik SDM tingkat enterprise untuk semua perusahaan di Indonesia, menciptakan lingkungan kerja yang lebih adil, efisien, dan berbasis data.
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold text-slate-100 mb-6 uppercase tracking-wider text-sm">Modul Utama</h4>
+                <ul class="space-y-3 text-sm text-slate-400">
+                    <li><a href="/dashboard" class="hover:text-blue-400 transition">Payroll & Pajak TER</a></li>
+                    <li><a href="/dashboard" class="hover:text-blue-400 transition">ONA Tools</a></li>
+                    <li><a href="/dashboard" class="hover:text-blue-400 transition">L&D Analytics</a></li>
+                    <li><a href="/dashboard" class="hover:text-blue-400 transition">Performance Mgmt</a></li>
+                </ul>
             </div>
 
+            <div>
+                <h4 class="font-bold text-slate-100 mb-6 uppercase tracking-wider text-sm">Perusahaan</h4>
+                <ul class="space-y-3 text-sm text-slate-400">
+                    <li><a href="/privacy-policy.html" class="hover:text-blue-400 transition">Kebijakan Privasi</a></li>
+                    <li><a href="/terms.html" class="hover:text-blue-400 transition">Syarat & Ketentuan</a></li>
+                    <li><a href="mailto:support@temanhr.my.id" class="hover:text-blue-400 transition">Hubungi Kami</a></li>
+                    <li class="pt-2"><a href="https://loker.temanhr.my.id" class="text-emerald-400 hover:text-emerald-300 font-bold transition flex items-center gap-2">Bursa Talenta <span class="bg-emerald-900/50 text-[9px] px-2 py-0.5 rounded text-emerald-300 border border-emerald-800">SOON</span></a></li>
+                </ul>
+            </div>
         </div>
-    </section>
 
-    <section class="bg-gray-50 py-16 px-4">
-        <div class="max-w-4xl mx-auto">
-            <h3 class="text-3xl font-bold text-center mb-10">Wawasan HRD</h3>
-            
-            <article class="mb-12">
-                <h4 class="text-gray-600 leading-relaxed mb-4">
-    Data Driven HR bukan sekadar tren, melainkan kebutuhan strategis bisnis masa kini. Keputusan promosi, rekrutmen, dan retensi karyawan tidak boleh lagi hanya mengandalkan intuisi atau 'perasaan' semata, karena risikonya terlalu besar bagi perusahaan. Dengan data yang akurat, Anda bisa mengidentifikasi pola <i>turnover</i>, mencegah kehilangan talenta terbaik, dan menghemat biaya operasional secara signifikan.
-</p>
-<br>
-<p class="text-gray-600 leading-relaxed mb-4">
-    Teman HR membantu Anda mewujudkannya dengan mengubah tumpukan data absensi mentah menjadi <i>insight</i> visual yang tajam. Tanpa perlu menguasai rumus Excel yang rumit, Anda bisa langsung menyajikan laporan strategis kepada manajemen yang berbasis data nyata, bukan sekadar asumsi.
-</p>
-            </article>
-
-             <article>
-                <h4 class="text-gray-600 leading-relaxed">
-    Rumus dasar menghitung persentase kehadiran adalah: <b>(Jumlah Kehadiran Aktual ÷ Jumlah Hari Kerja Efektif) x 100%</b>. Meskipun terdengar sederhana, melakukan perhitungan ini secara manual setiap bulan untuk ratusan karyawan sangat rentan terhadap <i>human error</i> dan memakan waktu berjam-jam.
-</p>
-<br>
-<p class="text-gray-600 leading-relaxed mt-4">
-    Di Teman HR, proses ini terjadi secara otomatis dalam hitungan detik. Sistem kami tidak hanya menghitung kehadiran, tetapi juga mampu mendeteksi tren keterlambatan dan ketidakhadiran berulang yang sering luput dari pengamatan manual, sehingga Anda bisa fokus pada strategi perbaikan kedisiplinan tim.
-</p>
-            </article>
-        </div>
-    </section>
-
-    <footer class="bg-gray-900 text-white py-8 text-center">
-        <p>&copy; 2026 Teman HR. All rights reserved.</p>
-        <div class="mt-4 text-sm text-gray-400">
-            <a href="#" class="mx-2">Privacy Policy</a> | <a href="#" class="mx-2">Terms of Service</a>
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-xs text-slate-500">
+            <p>&copy; <script>document.write(new Date().getFullYear())</script> Teman HR Enterprise. Seluruh hak cipta dilindungi.</p>
+            <p class="mt-2 md:mt-0">Dibuat di Indonesia 🇮🇩</p>
         </div>
     </footer>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            const links = document.querySelectorAll('.mobile-link');
+
+            // Toggle menu saat icon hamburger di klik
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+            });
+
+            // Tutup menu otomatis jika salah satu link di klik
+            links.forEach(link => {
+                link.addEventListener('click', () => {
+                    menu.classList.add('hidden');
+                });
+            });
+        });
+    </script>
 </body>
 </html>
