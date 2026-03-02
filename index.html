@@ -5,42 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teman HR - Solusi Analisis Data HRD, Payroll & E-Book</title>
     <meta name="description" content="Aplikasi HRIS gratis untuk analisis data karyawan, absensi, Payroll PPh 21 TER, dan KPI. Solusi terbaik untuk HRD Indonesia.">
+    
+    <meta property="og:title" content="Teman HR - Solusi Analisis Data HRD & Payroll">
+    <meta property="og:description" content="Tinggalkan cara manual. Otomatisasi data absensi, payroll PPh 21 TER, dan manajemen talenta Anda secara gratis.">
+    <meta property="og:type" content="website">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9004113328614297" crossorigin="anonymous"></script>
     <style>
         html { scroll-behavior: smooth; }
+        .gradient-text {
+            background: linear-gradient(135deg, #2563eb, #10b981);
+            -webkit-background-clip: text;
+            background-clip: text; /* 💡 TAMBAHKAN BARIS INI */
+            -webkit-text-fill-color: transparent;
+        }
     </style>
 </head>
-<body class="bg-white text-gray-800 font-sans">
+<body class="bg-slate-50 text-gray-800 font-sans selection:bg-blue-200">
 
-<nav class="bg-white border-b border-gray-100 fixed w-full z-50 top-0 backdrop-blur-md bg-opacity-90">
+<nav class="bg-white/80 border-b border-gray-100 fixed w-full z-50 top-0 backdrop-blur-md">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-20">
-            
             <div class="flex-shrink-0 flex items-center">
-                <a href="index.html" class="text-2xl font-bold text-blue-600">
-                    Teman<span class="text-gray-900">HR</span>
+                <a href="index.html" class="text-2xl font-black text-blue-600 tracking-tight">
+                    Teman<span class="text-slate-900">HR</span>
                 </a>
             </div>
 
-            <div class="hidden md:flex items-center space-x-6">
-                <a href="index.html" class="text-sm font-medium text-gray-700 hover:text-blue-600 px-3 py-2 transition">Beranda</a>
-                <a href="#fitur" class="text-sm font-medium text-gray-700 hover:text-blue-600 px-3 py-2 transition">Fitur</a>
-                <a href="https://loker.temanhr.my.id" class="text-sm font-bold text-emerald-600 hover:text-emerald-700 px-3 py-2 transition flex items-center gap-1">
-                    Bursa Talenta <span class="bg-emerald-100 text-[10px] px-1.5 py-0.5 rounded border border-emerald-200">Baru</span>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="index.html" class="text-sm font-bold text-slate-600 hover:text-blue-600 transition">Beranda</a>
+                <a href="#fitur" class="text-sm font-bold text-slate-600 hover:text-blue-600 transition">Fitur Aplikasi</a>
+                <a href="https://loker.temanhr.my.id" class="text-sm font-bold text-emerald-600 hover:text-emerald-700 transition flex items-center gap-1.5 relative">
+                    Bursa Talenta
+                    <span class="absolute -top-3 -right-6 bg-red-500 text-white text-[9px] px-1.5 py-0.5 rounded-full font-black animate-pulse">HOT</span>
                 </a>
-                <a href="toko.html" class="text-sm font-medium text-gray-700 hover:text-blue-600 px-3 py-2 transition">Toko & Tools</a>
-                <a href="blog.html" class="text-sm font-medium text-gray-700 hover:text-blue-600 px-3 py-2 transition">Artikel</a>
+                <a href="toko.html" class="text-sm font-bold text-slate-600 hover:text-blue-600 transition">Toko E-Book</a>
+                <a href="blog.html" class="text-sm font-bold text-slate-600 hover:text-blue-600 transition">Artikel</a>
             </div>
 
             <div class="hidden md:flex items-center">
-                <a href="https://app.temanhr.my.id" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-bold rounded-full text-white bg-blue-600 hover:bg-blue-700 shadow-md transition transform hover:-translate-y-0.5">
-                    Masuk Aplikasi
+                <a href="https://app.temanhr.my.id" class="inline-flex items-center justify-center px-6 py-2.5 font-bold rounded-full text-white bg-blue-600 hover:bg-blue-700 shadow-lg hover:shadow-blue-500/30 transition transform hover:-translate-y-0.5">
+                    Masuk Dashboard →
                 </a>
             </div>
 
             <div class="md:hidden flex items-center">
-                <button id="mobile-menu-btn" class="text-gray-600 hover:text-blue-600 focus:outline-none p-2">
+                <button id="mobile-menu-btn" class="text-slate-600 hover:text-blue-600 focus:outline-none p-2">
                     <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
@@ -49,170 +60,266 @@
         </div>
     </div>
 
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 shadow-xl absolute w-full left-0 top-20">
-        <div class="px-4 pt-2 pb-6 space-y-2">
-            <a href="index.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Beranda</a>
-            <a href="#fitur" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Fitur</a>
-            <a href="https://loker.temanhr.my.id" class="block px-3 py-3 rounded-md text-base font-bold text-emerald-600 hover:bg-emerald-50">Bursa Talenta (Loker)</a>
-            <a href="toko.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Toko & Tools</a>
-            <a href="blog.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Artikel</a>
-            <a href="https://app.temanhr.my.id" class="block w-full text-center mt-4 px-6 py-3 border border-transparent text-base font-bold rounded-lg text-white bg-blue-600 hover:bg-blue-700">
-                Masuk Aplikasi
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 shadow-2xl absolute w-full left-0 top-20">
+        <div class="px-5 pt-4 pb-6 space-y-3">
+            <a href="index.html" class="block px-4 py-3 rounded-xl text-base font-bold text-slate-700 hover:text-blue-600 hover:bg-blue-50">Beranda</a>
+            <a href="#fitur" class="block px-4 py-3 rounded-xl text-base font-bold text-slate-700 hover:text-blue-600 hover:bg-blue-50">Fitur Aplikasi</a>
+            <a href="https://loker.temanhr.my.id" class="block px-4 py-3 rounded-xl text-base font-bold text-emerald-600 hover:bg-emerald-50 flex items-center justify-between">Bursa Talenta <span class="bg-red-500 text-white text-[10px] px-2 py-1 rounded-full">BARU</span></a>
+            <a href="toko.html" class="block px-4 py-3 rounded-xl text-base font-bold text-slate-700 hover:text-blue-600 hover:bg-blue-50">Toko E-Book</a>
+            <a href="blog.html" class="block px-4 py-3 rounded-xl text-base font-bold text-slate-700 hover:text-blue-600 hover:bg-blue-50">Artikel</a>
+            <a href="https://app.temanhr.my.id" class="block w-full text-center mt-4 px-6 py-4 rounded-xl text-white bg-blue-600 font-bold hover:bg-blue-700 shadow-lg">
+                Masuk Dashboard
             </a>
         </div>
     </div>
 </nav>
 
-<header class="pt-32 pb-20 px-4 text-center bg-blue-50">
-    <div class="max-w-4xl mx-auto">
-        <div class="inline-block px-4 py-1 mb-6 rounded-full bg-blue-100 text-blue-700 text-xs font-bold tracking-wide uppercase">
-            New: Payroll & Pajak TER 2024
+<header class="pt-32 pb-16 px-4 relative overflow-hidden bg-white">
+    <div class="absolute top-0 right-0 -translate-y-12 translate-x-1/3 w-[800px] h-[600px] bg-gradient-to-br from-blue-50 to-emerald-50 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 relative z-10">
+        
+        <div class="w-full lg:w-1/2 text-center lg:text-left">
+            <div class="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-xs font-bold tracking-wide">
+                <span class="relative flex h-2 w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                </span>
+                MENDUKUNG PAYROLL TER 2024
+            </div>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 mb-6 leading-[1.1]">
+                Otomatisasi Tugas HRD <br />
+                <span class="gradient-text">Bebas Pusing Excel.</span>
+            </h1>
+            <p class="text-lg md:text-xl text-slate-600 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                Solusi all-in-one untuk analisis data karyawan, perhitungan payroll otomatis, hingga rekrutmen talenta terbaik. Dibangun khusus untuk praktisi HR modern.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                <a href="https://app.temanhr.my.id" class="w-full sm:w-auto text-center bg-blue-600 text-white text-lg px-8 py-4 rounded-xl font-bold shadow-xl shadow-blue-500/30 hover:bg-blue-700 transition transform hover:-translate-y-1">
+                    Mulai Gunakan Gratis
+                </a>
+                <a href="#fitur" class="w-full sm:w-auto text-center bg-white text-slate-700 border-2 border-slate-200 text-lg px-8 py-4 rounded-xl font-bold hover:border-slate-300 hover:bg-slate-50 transition">
+                    Pelajari Fitur
+                </a>
+            </div>
+            <p class="mt-4 text-xs font-bold text-slate-400">✅ Gratis selamanya • ❌ Tanpa kartu kredit</p>
         </div>
-        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Kelola Data Karyawan Jadi Lebih Mudah</h2>
-        <p class="text-xl text-gray-600 mb-8 leading-relaxed">
-            Tidak perlu pusing dengan rumus Excel yang rumit. Upload data absensi atau payroll Anda, biar Teman HR yang menganalisisnya secara otomatis.
-        </p>
-        <div class="flex flex-col sm:flex-row justify-center gap-4">
-            <a href="https://app.temanhr.my.id" class="inline-block bg-blue-600 text-white text-lg px-8 py-4 rounded-lg font-bold shadow-lg hover:bg-blue-700 transition">
-                Coba Aplikasi Gratis →
-            </a>
-            <a href="toko.html" class="inline-block bg-white text-blue-600 border border-blue-200 text-lg px-8 py-4 rounded-lg font-bold hover:bg-blue-50 transition">
-                Lihat E-Book HRD
-            </a>
+
+        <div class="w-full lg:w-1/2 mt-10 lg:mt-0">
+            <div class="relative rounded-2xl bg-white border border-slate-200 shadow-2xl overflow-hidden transform lg:rotate-2 hover:rotate-0 transition duration-500">
+                <div class="bg-slate-100 border-b border-slate-200 px-4 py-3 flex gap-2">
+                    <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                    <div class="w-3 h-3 rounded-full bg-amber-400"></div>
+                    <div class="w-3 h-3 rounded-full bg-emerald-400"></div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop" alt="Dashboard TemanHR Placeholder" class="w-full h-auto opacity-90">
+                
+                <div class="absolute bottom-6 left-6 bg-white/90 backdrop-blur p-4 rounded-xl border border-slate-200 shadow-lg flex items-center gap-4">
+                    <div class="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600 text-xl font-black">✓</div>
+                    <div>
+                        <p class="text-xs font-bold text-slate-500 uppercase">Payroll Selesai</p>
+                        <p class="text-sm font-black text-slate-900">Akurasi 100%</p>
+                    </div>
+                </div>
+            </div>
         </div>
+
     </div>
 </header>
 
-<div class="max-w-4xl mx-auto py-8 text-center bg-gray-100 my-8 rounded-lg">
-    <p class="text-gray-400 text-sm">[Space Iklan Google AdSense]</p>
+<div class="bg-white border-y border-slate-100 py-8">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+        <p class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-6">Telah menjadi partner andalan bagi HRD di seluruh Indonesia</p>
+        <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition duration-500">
+            <div class="text-xl font-black">🏢 TechCorp</div>
+            <div class="text-xl font-black">🛍️ RetailMaju</div>
+            <div class="text-xl font-black">🚀 StartupNesia</div>
+            <div class="text-xl font-black">🏥 MedikaPlus</div>
+        </div>
+    </div>
 </div>
 
-<section id="fitur" class="py-16 px-4 bg-white">
+<div class="max-w-4xl mx-auto py-6 text-center">
+    <div class="bg-slate-50 border border-dashed border-slate-300 p-4 rounded-xl">
+        <p class="text-slate-400 text-xs font-bold uppercase">[Space Iklan Google AdSense]</p>
+        </div>
+</div>
+
+<section id="fitur" class="py-20 px-4 bg-slate-50">
     <div class="max-w-6xl mx-auto">
-        <div class="text-center mb-12">
-            <h3 class="text-3xl font-bold text-gray-900">Fitur Unggulan</h3>
-            <p class="text-gray-500 mt-2">Solusi lengkap: Dari operasional harian hingga marketplace talenta.</p>
+        <div class="text-center mb-16">
+            <h2 class="text-blue-600 font-bold tracking-wide uppercase text-sm mb-2">Kenapa Memilih Kami?</h2>
+            <h3 class="text-3xl md:text-4xl font-black text-slate-900">Satu Platform, Semua Kebutuhan HR</h3>
+            <p class="text-slate-500 mt-4 text-lg max-w-2xl mx-auto">Tinggalkan dokumen berserakan. Integrasikan analitik, penggajian, dan rekrutmen di satu tempat.</p>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-8">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             
-            <div class="p-6 border border-blue-100 bg-blue-50/50 rounded-xl hover:shadow-md transition group">
-                <div class="text-3xl mb-4 group-hover:scale-110 transition-transform">📊</div>
-                <h3 class="text-xl font-bold mb-2 text-blue-900">Dashboard Visual</h3>
-                <p class="text-gray-600 text-sm">Ubah data absensi mentah menjadi grafik kehadiran yang mudah dipahami manajemen.</p>
+            <div class="bg-white p-8 border border-slate-100 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 group">
+                <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">📊</div>
+                <h3 class="text-xl font-black mb-3 text-slate-900">Dashboard Interaktif</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">Ubah data mentah menjadi grafik kehadiran yang *insightful*. Pantau performa karyawan secara real-time untuk presentasi manajemen.</p>
             </div>
             
-            <div class="p-6 border border-blue-100 bg-blue-50/50 rounded-xl hover:shadow-md transition group">
-                <div class="text-3xl mb-4 group-hover:scale-110 transition-transform">💰</div>
-                <h3 class="text-xl font-bold mb-2 text-blue-900">Payroll & Pajak TER</h3>
-                <p class="text-gray-600 text-sm">Hitung gaji bersih, BPJS, dan PPh 21 metode TER terbaru secara otomatis & akurat.</p>
+            <div class="bg-white p-8 border border-slate-100 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 group">
+                <div class="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">💰</div>
+                <h3 class="text-xl font-black mb-3 text-slate-900">Kalkulator TER 2024</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">Hitung otomatis Take Home Pay, potongan BPJS, dan PPh 21 menggunakan regulasi Tarif Efektif Rata-rata (TER) terbaru tanpa pusing.</p>
             </div>
 
-            <div class="p-6 border border-blue-100 bg-blue-50/50 rounded-xl hover:shadow-md transition group">
-                <div class="text-3xl mb-4 group-hover:scale-110 transition-transform">📉</div>
-                <h3 class="text-xl font-bold mb-2 text-blue-900">Analisis Turnover</h3>
-                <p class="text-gray-600 text-sm">Deteksi tren keluar masuk karyawan sebelum terlambat untuk strategi retensi.</p>
+            <div class="bg-gradient-to-br from-blue-600 to-indigo-800 p-8 border border-blue-500 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 group relative overflow-hidden text-white transform lg:-translate-y-4">
+                <div class="absolute top-0 right-0 bg-yellow-400 text-slate-900 text-[10px] font-black px-3 py-1.5 rounded-bl-xl uppercase tracking-widest">Unggulan</div>
+                <div class="w-14 h-14 bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">🤝</div>
+                <h3 class="text-xl font-black mb-3">ATS & Bursa Talenta</h3>
+                <p class="text-blue-100 text-sm leading-relaxed mb-6">Marketplace khusus SDM. Pasang lowongan, kelola pelamar (ATS), dan lakukan interview langsung dalam satu platform aman.</p>
+                <a href="https://loker.temanhr.my.id" class="inline-flex items-center gap-2 text-sm font-bold text-white bg-white/20 hover:bg-white/30 px-5 py-2.5 rounded-lg transition w-full justify-center">Kunjungi Bursa Loker →</a>
             </div>
 
-            <div class="p-6 border border-emerald-100 bg-emerald-50/50 rounded-xl hover:shadow-md transition group relative overflow-hidden">
-                <div class="absolute top-0 right-0 bg-emerald-500 text-white text-[10px] font-bold px-2 py-1 rounded-bl-lg">HOT</div>
-                <div class="text-3xl mb-4 group-hover:scale-110 transition-transform">🤝</div>
-                <h3 class="text-xl font-bold mb-2 text-emerald-900">Bursa Talenta</h3>
-                <p class="text-gray-600 text-sm">Marketplace SDM. Pasang loker, belanja manpower, dan interview online yang aman.</p>
-                <a href="https://loker.temanhr.my.id" class="inline-block mt-3 text-sm font-bold text-emerald-600 hover:underline">Kunjungi Bursa →</a>
+            <div class="bg-white p-8 border border-slate-100 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 group">
+                <div class="w-14 h-14 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">📉</div>
+                <h3 class="text-xl font-black mb-3 text-slate-900">Prediksi Turnover</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">Sistem cerdas untuk mendeteksi anomali absensi dan memprediksi tren keluar-masuk karyawan sebelum berdampak pada operasional.</p>
             </div>
 
-            <div class="p-6 border rounded-xl hover:shadow-md transition">
-                <div class="text-3xl mb-4">🧠</div>
-                <h3 class="text-lg font-bold mb-2">L&D Analytics</h3>
-                <p class="text-gray-600 text-sm">Ukur ROI pelatihan dan kesenjangan skill (Gap Analysis).</p>
+            <div class="bg-white p-8 border border-slate-100 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 group">
+                <div class="w-14 h-14 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">🧠</div>
+                <h3 class="text-xl font-black mb-3 text-slate-900">L&D Analytics</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">Ukur *Return on Investment* (ROI) dari program pelatihan dan temukan kesenjangan keahlian (Gap Analysis) di tim Anda.</p>
             </div>
 
-            <div class="p-6 border rounded-xl hover:shadow-md transition">
-                <div class="text-3xl mb-4">🕸️</div>
-                <h3 class="text-lg font-bold mb-2">Org. Network Analysis</h3>
-                <p class="text-gray-600 text-sm">Petakan kolaborasi dan temukan 'Influencer' tersembunyi di kantor Anda.</p>
+            <div class="bg-white p-8 border border-slate-100 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 group">
+                <div class="w-14 h-14 bg-rose-50 text-rose-600 rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">🕸️</div>
+                <h3 class="text-xl font-black mb-3 text-slate-900">Network Analysis</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">Petakan struktur kolaborasi informal perusahaan dan temukan 'Key Influencer' tersembunyi di antara staf Anda.</p>
             </div>
 
         </div>
     </div>
 </section>
 
-<section class="py-20 px-4 bg-gradient-to-br from-blue-900 to-slate-900 text-white overflow-hidden">
-    <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
+<section class="py-24 px-4 bg-slate-900 text-white overflow-hidden relative">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-600/30 via-transparent to-transparent pointer-events-none"></div>
+
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16 relative z-10">
         
-        <div class="w-full md:w-1/3 flex justify-center relative">
-            <div class="absolute inset-0 bg-blue-500 blur-3xl opacity-20 rounded-full"></div>
-            <img src="gambar/HRD 101 - Sampul cover.png" alt="Ebook HRD 101" class="relative rounded-lg shadow-2xl transform rotate-3 hover:rotate-0 transition duration-500 border-4 border-white/10 w-64 md:w-full">
+        <div class="w-full md:w-2/5 flex justify-center relative perspective-1000">
+            <div class="absolute inset-0 bg-blue-500 blur-[80px] opacity-30 rounded-full"></div>
+            <img src="gambar/HRD 101 - Sampul cover.png" alt="Ebook HRD 101" class="relative rounded-xl shadow-2xl transform md:-rotate-6 hover:rotate-0 transition duration-700 border border-white/10 w-64 md:w-[320px] z-10">
         </div>
 
-        <div class="w-full md:w-2/3 text-center md:text-left">
-            <span class="inline-block bg-yellow-400 text-blue-900 text-xs font-bold px-3 py-1 rounded-full mb-4 tracking-wide">BEST SELLER</span>
-            <h2 class="text-3xl md:text-4xl font-bold mb-4 leading-tight">HRD 101: The Modern Architect <br><span class="text-blue-300 text-2xl">(Arsitek Organisasi)</span></h2>
-            <p class="text-lg text-gray-300 mb-6 font-light">
-                Jangan hanya jadi admin, jadilah arsitek. Pelajari cara membangun bisnis dengan struktur dan manusia yang tangguh. Panduan wajib untuk praktisi HR modern.
+        <div class="w-full md:w-3/5 text-center md:text-left">
+            <div class="inline-flex items-center gap-2 bg-yellow-400/10 border border-yellow-400/30 text-yellow-400 text-xs font-black px-3 py-1.5 rounded-full mb-6 uppercase tracking-widest">
+                🌟 Masterclass E-Book Terlaris
+            </div>
+            <h2 class="text-3xl md:text-5xl font-black mb-6 leading-tight">
+                HRD 101: The Modern Architect
+            </h2>
+            <p class="text-lg text-slate-300 mb-8 font-medium leading-relaxed">
+                Tinggalkan *mindset* admin, jadilah arsitek organisasi. E-Book komprehensif ini membongkar rahasia membangun struktur, budaya, dan manusia yang tangguh untuk memenangkan kompetisi bisnis.
             </p>
             
-            <div class="flex flex-col md:flex-row gap-4 justify-center md:justify-start">
-                <a href="https://lynk.id/arrivari/8l03qe7rx7qx" target="_blank" class="inline-flex items-center justify-center bg-yellow-400 text-blue-900 text-lg px-8 py-3 rounded-lg font-bold shadow-lg hover:bg-yellow-300 transition transform hover:-translate-y-1">
-                    🛒 Beli E-Book Sekarang
+            <ul class="space-y-3 mb-10 text-slate-300 text-sm font-medium">
+                <li class="flex items-start gap-3 justify-center md:justify-start">
+                    <svg class="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+                    Strategi rekrutmen talenta pasca-pandemi.
+                </li>
+                <li class="flex items-start gap-3 justify-center md:justify-start">
+                    <svg class="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+                    Rahasia menyusun KPI yang benar-benar berdampak.
+                </li>
+                <li class="flex items-start gap-3 justify-center md:justify-start">
+                    <svg class="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+                    Membangun budaya *high-performance* tanpa *burnout*.
+                </li>
+            </ul>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start items-center">
+                <a href="https://lynk.id/arrivari/8l03qe7rx7qx" target="_blank" class="inline-flex items-center justify-center bg-yellow-400 text-slate-900 text-lg px-8 py-4 rounded-xl font-black shadow-[0_0_20px_rgba(250,204,21,0.4)] hover:bg-yellow-300 hover:shadow-[0_0_30px_rgba(250,204,21,0.6)] transition transform hover:-translate-y-1 w-full sm:w-auto">
+                    Unduh E-Book Sekarang
                 </a>
+                <span class="text-sm text-slate-400 font-medium whitespace-nowrap">Instant Delivery via Lynk.id</span>
             </div>
-            <p class="mt-4 text-sm text-gray-400">Instant Download via Lynk.id</p>
         </div>
 
     </div>
 </section>
 
-<section class="bg-gray-50 py-16 px-4">
+<section class="bg-white py-20 px-4">
     <div class="max-w-4xl mx-auto">
-        <h3 class="text-3xl font-bold text-center mb-10">Wawasan HRD</h3>
+        <div class="text-center mb-12">
+            <h3 class="text-3xl font-black text-slate-900 mb-4">Wawasan Eksekutif HRD</h3>
+            <p class="text-slate-500">Tingkatkan pemahaman Anda tentang manajemen talenta berbasis data.</p>
+        </div>
         
-        <article class="mb-12">
-            <h4 class="text-xl font-bold text-gray-800 mb-3">Pentingnya Data Driven HR</h4>
-            <p class="text-gray-600 leading-relaxed mb-4">
-                Data Driven HR bukan sekadar tren, melainkan kebutuhan strategis bisnis masa kini. Keputusan promosi, rekrutmen, dan retensi karyawan tidak boleh lagi hanya mengandalkan intuisi atau 'perasaan' semata, karena risikonya terlalu besar bagi perusahaan. Dengan data yang akurat, Anda bisa mengidentifikasi pola <i>turnover</i>, mencegah kehilangan talenta terbaik, dan menghemat biaya operasional secara signifikan.
-            </p>
-            <p class="text-gray-600 leading-relaxed mb-4">
-                Teman HR membantu Anda mewujudkannya dengan mengubah tumpukan data absensi mentah menjadi <i>insight</i> visual yang tajam. Tanpa perlu menguasai rumus Excel yang rumit, Anda bisa langsung menyajikan laporan strategis kepada manajemen yang berbasis data nyata, bukan sekadar asumsi.
-            </p>
-        </article>
+        <div class="space-y-8">
+            <article class="p-6 md:p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:border-blue-200 transition">
+                <h4 class="text-2xl font-black text-slate-900 mb-4">Mengapa 'Data-Driven HR' Adalah Kunci Bertahan Hidup?</h4>
+                <p class="text-slate-600 leading-relaxed mb-4">
+                    Keputusan promosi, rekrutmen, dan retensi karyawan tidak boleh lagi hanya mengandalkan intuisi atau 'perasaan' semata. Dengan data yang akurat, Anda bisa mengidentifikasi pola <i>turnover</i>, mencegah kehilangan talenta terbaik, dan menghemat biaya operasional secara signifikan.
+                </p>
+                <p class="text-slate-600 leading-relaxed">
+                    Sistem <strong>Teman HR</strong> membantu Anda mewujudkannya dengan mengubah tumpukan data absensi mentah menjadi <i>insight</i> visual yang tajam. Tanpa perlu menguasai rumus Excel yang rumit, Anda bisa langsung menyajikan laporan strategis kepada pimpinan.
+                </p>
+            </article>
 
-        <article>
-            <h4 class="text-xl font-bold text-gray-800 mb-3">Cara Menghitung Persentase Kehadiran</h4>
-            <p class="text-gray-600 leading-relaxed">
-                Rumus dasar menghitung persentase kehadiran adalah: <b>(Jumlah Kehadiran Aktual ÷ Jumlah Hari Kerja Efektif) x 100%</b>. Meskipun terdengar sederhana, melakukan perhitungan ini secara manual setiap bulan untuk ratusan karyawan sangat rentan terhadap <i>human error</i> dan memakan waktu berjam-jam.
-            </p>
-            <p class="text-gray-600 leading-relaxed mt-4">
-                Di Teman HR, proses ini terjadi secara otomatis dalam hitungan detik. Sistem kami tidak hanya menghitung kehadiran, tetapi juga mampu mendeteksi tren keterlambatan dan ketidakhadiran berulang yang sering luput dari pengamatan manual, sehingga Anda bisa fokus pada strategi perbaikan kedisiplinan tim.
-            </p>
-        </article>
+            <article class="p-6 md:p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:border-blue-200 transition">
+                <h4 class="text-2xl font-black text-slate-900 mb-4">Otomatisasi Hitung Persentase Kehadiran</h4>
+                <p class="text-slate-600 leading-relaxed">
+                    Rumus dasar menghitung persentase kehadiran adalah: <b>(Kehadiran Aktual ÷ Hari Kerja Efektif) x 100%</b>. Meskipun terdengar sederhana, melakukannya secara manual untuk ratusan karyawan setiap bulan sangat rentan <i>human error</i> dan menghabiskan waktu produktif Anda.
+                </p>
+                <p class="text-slate-600 leading-relaxed mt-4">
+                    Lewat modul analitik kami, proses ini terjadi otomatis dalam hitungan detik. Sistem tidak hanya menghitung kehadiran, tetapi mendeteksi tren keterlambatan spesifik di departemen tertentu, sehingga Anda bisa fokus merancang solusi kedisiplinan yang tepat sasaran.
+                </p>
+            </article>
+        </div>
     </div>
 </section>
 
-<footer class="bg-gray-900 text-white py-10 text-center">
+<section class="bg-blue-600 py-16 px-4 text-center">
+    <div class="max-w-3xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-black text-white mb-6">Siap Mengubah Cara Kerja HRD Anda?</h2>
+        <p class="text-blue-100 text-lg mb-8">Bergabunglah dengan profesional HR lainnya yang sudah menggunakan Teman HR untuk bekerja lebih pintar, bukan lebih keras.</p>
+        <a href="https://app.temanhr.my.id" class="inline-block bg-white text-blue-600 text-lg px-10 py-4 rounded-xl font-black shadow-xl hover:bg-slate-50 transition transform hover:-translate-y-1">
+            Buat Akun Gratis
+        </a>
+    </div>
+</section>
+
+<footer class="bg-slate-950 text-slate-400 py-12 text-center border-t border-slate-900">
     <div class="max-w-4xl mx-auto px-4">
-        <h2 class="text-2xl font-bold mb-4">Teman<span class="text-blue-400">HR</span></h2>
-        <p class="text-gray-400 mb-6">Partner strategis untuk pengelolaan sumber daya manusia Indonesia.</p>
+        <h2 class="text-3xl font-black mb-4 text-white tracking-tight">Teman<span class="text-blue-500">HR</span></h2>
+        <p class="mb-8 font-medium">Partner strategis manajemen talenta Indonesia.</p>
         
-        <div class="flex justify-center space-x-6 text-sm text-gray-400 mb-8">
-            <a href="privacy-policy.html" class="hover:text-white transition">Privacy Policy</a>
-            <span class="text-gray-700">|</span>
-            <a href="terms.html" class="hover:text-white transition">Terms of Service</a>
-            <span class="text-gray-700">|</span>
-            <a href="mailto:support@temanhr.my.id" class="hover:text-white transition">Hubungi Kami</a>
+        <div class="flex justify-center flex-wrap gap-x-8 gap-y-4 text-sm font-bold mb-10">
+            <a href="https://app.temanhr.my.id" class="hover:text-blue-400 transition">Login Aplikasi</a>
+            <a href="https://loker.temanhr.my.id" class="hover:text-blue-400 transition">Bursa Loker</a>
+            <a href="privacy-policy.html" class="hover:text-blue-400 transition">Privacy Policy</a>
+            <a href="terms.html" class="hover:text-blue-400 transition">Terms of Service</a>
+            <a href="mailto:support@temanhr.my.id" class="hover:text-blue-400 transition text-white">Hubungi Kami</a>
         </div>
 
-        <p class="text-xs text-gray-600">&copy; 2026 Teman HR. All rights reserved.</p>
+        <p class="text-xs text-slate-600">&copy; 2026 Teman HR. All rights reserved. Dibuat dengan 💙 di Indonesia.</p>
     </div>
 </footer>
 
 <script>
+    // Mobile menu toggle
     const btn = document.getElementById('mobile-menu-btn');
     const menu = document.getElementById('mobile-menu');
 
     btn.addEventListener('click', () => {
         menu.classList.toggle('hidden');
+    });
+
+    // Simple scroll behavior for navbar background
+    window.addEventListener('scroll', () => {
+        const nav = document.querySelector('nav');
+        if (window.scrollY > 10) {
+            nav.classList.add('shadow-sm');
+        } else {
+            nav.classList.remove('shadow-sm');
+        }
     });
 </script>
 
